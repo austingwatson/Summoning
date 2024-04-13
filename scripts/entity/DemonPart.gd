@@ -6,10 +6,11 @@ enum PartType {
 	BODY,
 	ARM,
 	LEG,
+	FORMED,
 }
 
-const SPRING_CONSTANT = 500
-const LIFT_CONSTANT = 2000
+const SPRING_CONSTANT = 1000
+const LIFT_CONSTANT = 4000
 
 export (PartType) var part_type = PartType.HEAD
 export var part_stats: Resource
@@ -42,6 +43,8 @@ func _physics_process(delta):
 	
 	if being_pushed and not mouse_down:
 		push()
+		
+	rotation_degrees = 0
 	
 
 func enable():
@@ -62,9 +65,11 @@ func push():
 	var distance = 100 - self.global_position.distance_to(added_global_positions)
 	var direction = self.global_position.direction_to(added_global_positions)
 	
-	#print(distance)
-	
 	apply_central_impulse(-direction * distance)
+	
+
+func fling(direction):
+	apply_central_impulse(direction)
 
 
 func _on_DemonPart_mouse_entered():

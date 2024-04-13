@@ -9,25 +9,49 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node2D",
-"class": "DemonDummy",
+"base": "Area2D",
+"class": "DemonAltar",
 "language": "GDScript",
-"path": "res://scripts/entity/DemonDummy.gd"
+"path": "res://scripts/entity/DemonAltar.gd"
 }, {
 "base": "RigidBody2D",
 "class": "DemonPart",
 "language": "GDScript",
 "path": "res://scripts/entity/DemonPart.gd"
 }, {
+"base": "RigidBody2D",
+"class": "FormedDemon",
+"language": "GDScript",
+"path": "res://scripts/entity/FormedDemon.gd"
+}, {
+"base": "Area2D",
+"class": "FormedDemonHolder",
+"language": "GDScript",
+"path": "res://scripts/entity/FormedDemonHolder.gd"
+}, {
+"base": "Area2D",
+"class": "Hook",
+"language": "GDScript",
+"path": "res://scripts/entity/Hook.gd"
+}, {
 "base": "Resource",
-"class": "PartStat",
+"class": "PartStats",
 "language": "GDScript",
 "path": "res://resources/part_stats.gd"
+}, {
+"base": "Area2D",
+"class": "SummoningCircle",
+"language": "GDScript",
+"path": "res://scripts/entity/SummoningCircle.gd"
 } ]
 _global_script_class_icons={
-"DemonDummy": "",
+"DemonAltar": "",
 "DemonPart": "",
-"PartStat": ""
+"FormedDemon": "",
+"FormedDemonHolder": "",
+"Hook": "",
+"PartStats": "",
+"SummoningCircle": ""
 }
 
 [application]
@@ -43,7 +67,7 @@ window/size/height=270
 window/size/test_width=1280
 window/size/test_height=720
 window/stretch/mode="2d"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep_width"
 
 [gui]
 
@@ -62,7 +86,10 @@ grab={
 2d_physics/layer_1="DemonPart"
 2d_physics/layer_2="DemonPush"
 2d_physics/layer_3="WorldBoundingBox"
-2d_physics/layer_4="DemonDummy"
+2d_physics/layer_4="DemonAltar"
+2d_physics/layer_5="FormedDemon"
+2d_physics/layer_6="Hook"
+2d_physics/layer_7="SummoningCircle"
 
 [physics]
 

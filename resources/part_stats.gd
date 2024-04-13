@@ -1,13 +1,21 @@
-class_name PartStat
+class_name PartStats
 extends Resource
 
 const MIN: int = 0
-const MAX: int = 4
+const MAX: int = 6
 
-export (int, 0, 4) var strength = 0
-export (int, 0, 4) var speed = 0
-export (int, 0, 4) var endurance = 0
-export (int, 0, 4) var intelligence = 0
+export (int, 0, 6) var lethality = 0
+export (int, 0, 6) var endurance = 0
+export (int, 0, 6) var charm = 0
+export (int, 0, 6) var speed = 0
+
+
+func set_all(lethality, endurance, charm, speed):
+	self.lethality = lethality
+	self.endurance = endurance
+	self.charm = charm
+	self.speed = speed
+	
 
 func generate_random(max_stats: int):
 	var order = [0, 1, 2, 3]
@@ -17,25 +25,34 @@ func generate_random(max_stats: int):
 		max_stats -= stat
 		match i:
 			0:
-				strength = stat
+				lethality = stat
 			1:
-				speed = stat
-			2:
 				endurance = stat
+			2:
+				charm = stat
 			3:
-				intelligence = stat
+				speed = stat
 
 
-func check_score(part_stats: PartStat) -> int:
-	var strength_score = min(0, part_stats.strength - self.strength)
-	var speed_score = min(0, part_stats.speed - self.speed)
+# needed is how close to perfect the score needs to be
+# 0 is perfect
+# going up is less than perfect
+# 24 is the least perfect
+func check_score(part_stats, needed) -> bool:
+	var lethality_score = min(0, part_stats.lethality - self.lethality)
 	var endurance_score = min(0, part_stats.endurance - self.endurance)
-	var intelligence_score = min(0, part_stats.intelligence - self.intelligence)
+	var charm_score = min(0, part_stats.charm - self.charm)
+	var speed_score = min(0, part_stats.speed - self.speed)
+	var total = abs(lethality_score + endurance_score + charm_score + speed_score)
 	
-	#print("Strength: ", self.strength, ", ", part_stats.strength, ", ", strength_score)
-	#print("Speed: ", self.speed, ", ", part_stats.speed, ", ", speed_score)
-	#print("Endurance: ", self.endurance, ", ", part_stats.endurance, ", ", endurance_score)
-	#print("Intelligence: ", self.intelligence, ", ", part_stats.intelligence, ", ", intelligence_score)
-	#print(strength_score + speed_score + endurance_score + intelligence_score)
+	self.print_stats()
+	part_stats.print_stats()
 	
-	return strength_score + speed_score + endurance_score + intelligence_score
+	return total <= needed
+	
+
+func print_stats():
+	print("Lethality: ", lethality)
+	print("Endurance: ", endurance)
+	print("Charm: ", charm)
+	print("Speed: ", speed)

@@ -3,9 +3,8 @@
 [ext_resource path="res://resources/part_stats.gd" type="Script" id=1]
 
 [resource]
-resource_local_to_scene = true
 script = ExtResource( 1 )
-lethality = 2
-endurance = 2
-charm = 2
-speed = 2
+lethality = 1
+endurance = 0
+charm = 0
+speed = 0

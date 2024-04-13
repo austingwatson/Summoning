@@ -16,8 +16,10 @@ margin_bottom = 14.0
 text = "Strength"
 
 [node name="Accept" type="Button" parent="."]
-margin_left = 49.0
+margin_left = 63.0
 margin_top = 24.0
 margin_right = 84.0
 margin_bottom = 44.0
-text = "Acc"
+text = "A"
+
+[connection signal="pressed" from="Accept" to="." method="_on_Accept_pressed"]
