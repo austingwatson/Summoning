@@ -1,7 +1,6 @@
 [gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/entity/DemonPart.gd" type="Script" id=1]
-[ext_resource path="res://resources/TestDemonPart.tres" type="Resource" id=2]
 [ext_resource path="res://scenes/ui/ToolTip.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/textures/effects_sheet.png" type="Texture" id=4]
 
@@ -50,6 +49,8 @@ animations = [ {
 "speed": 10.0
 } ]
 
+[sub_resource type="AtlasTexture" id=11]
+
 [sub_resource type="CircleShape2D" id=2]
 radius = 20.0
 
@@ -61,10 +62,8 @@ gravity_scale = 0.0
 linear_damp = 10.0
 angular_damp = 100.0
 script = ExtResource( 1 )
-part_stats = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource( 1 )
 
 [node name="Flame" type="AnimatedSprite" parent="."]
@@ -73,6 +72,7 @@ frames = SubResource( 10 )
 animation = "spark"
 
 [node name="Sprite" type="Sprite" parent="."]
+texture = SubResource( 11 )
 
 [node name="PushArea" type="Area2D" parent="."]
 collision_layer = 2

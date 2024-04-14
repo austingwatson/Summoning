@@ -19,7 +19,21 @@ onready var pact_locations = $PactLocations
 
 
 func _ready():
+	GlobalValues.game_screen = self
 	game_master.next_month(self, pacts.get_child_count(), demon_parts.get_child_count())
+	
+	# for debugging only, comment out for full game
+	call_deferred("skip_tutorial")
+	
+
+func skip_tutorial():
+	for pact in pacts.get_children():
+		pact.queue_free()
+	for i in range(pact_locations_occupied.size()):
+		pact_locations_occupied[i] = false
+	
+	GlobalValues.skip_tutorial()
+	$DemonAltar.empty_parts()
 
 
 func add_pact(pact):
@@ -53,7 +67,7 @@ func add_demon_part(demon_part):
 	demon_parts.add_child(demon_part)
 	
 
-func _on_pact_accepted(accepted, pact_position):
+func _on_pact_accepted(accepted, pact_position):	
 	pact_locations_occupied[pact_position] = false
 	if accepted:
 		print("Pact Accepted")
@@ -65,6 +79,9 @@ func _on_pact_accepted(accepted, pact_position):
 
 
 func _on_NextMonthButton_pressed():
+	if GlobalValues.tutorial_step < GlobalValues.TutorialStep.NEXT_MONTH:
+		return
+	
 	for pact in pacts.get_children():
 		pact.next_month()
 	

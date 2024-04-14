@@ -62,6 +62,9 @@ func set_background(frame):
 
 func _on_AcceptPact_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.is_action_released("click"):
+		if GlobalValues.tutorial_step == GlobalValues.TutorialStep.ACCEPT_PACT:
+			GlobalValues.next_tutorial_step()
+		
 		pact.accept()
 
 

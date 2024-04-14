@@ -9,6 +9,28 @@ onready var part_positions = $PartPositions
 
 func _ready():
 	empty_parts()
+	
+	var demon_part_scene = preload("res://scenes/entity/DemonPart.tscn")
+	
+	var leg_part = demon_part_scene.instance()
+	leg_part.part_type = DemonPart.PartType.HEAD
+	leg_part.part_stats = preload("res://resources/parts/tutorial/TutorialLeg.tres")
+	leg_part.global_position = part_positions.get_child(0).global_position
+	leg_part.part_type = DemonPart.PartType.LEG
+	get_parent().call_deferred("add_demon_part", leg_part)
+	leg_part.call_deferred("disable")
+	parts[DemonPart.PartType.LEG] = leg_part
+	part_positions.get_child(0).visible = false
+	
+	var arm_part = demon_part_scene.instance()
+	arm_part.part_type = DemonPart.PartType.HEAD
+	arm_part.part_stats = preload("res://resources/parts/tutorial/TutorialArm.tres")
+	arm_part.global_position = part_positions.get_child(2).global_position
+	arm_part.part_type = DemonPart.PartType.ARM
+	get_parent().call_deferred("add_demon_part", arm_part)
+	arm_part.call_deferred("disable")
+	parts[DemonPart.PartType.ARM] = arm_part
+	part_positions.get_child(2).visible = false
 
 
 func empty_parts():
@@ -44,6 +66,9 @@ func get_closest_open_part_position(demon_part) -> Vector2:
 
 
 func _on_DemonAltar_body_entered(body):
+	if GlobalValues.tutorial_step <= GlobalValues.TutorialStep.MOVE_PART_2:
+		GlobalValues.next_tutorial_step()
+	
 	if not has_formed_demon and body is DemonPart and body.mouse_down:
 		if body.part_type != DemonPart.PartType.FORMED and parts[body.part_type] == null:
 			parts[body.part_type] = body
@@ -52,6 +77,11 @@ func _on_DemonAltar_body_entered(body):
 
 
 func _on_Accept_pressed():
+	if GlobalValues.tutorial_step != GlobalValues.TutorialStep.ACCEPT and GlobalValues.tutorial_step < GlobalValues.TutorialStep.HOOK:
+		return
+	elif GlobalValues.tutorial_step == GlobalValues.TutorialStep.ACCEPT:
+		GlobalValues.next_tutorial_step()
+	
 	if has_formed_demon:
 		return
 	
@@ -73,4 +103,9 @@ func _on_Accept_pressed():
 
 
 func _on_Clear_pressed():
+	if GlobalValues.tutorial_step < GlobalValues.TutorialStep.CLEAR:
+		return
+	elif GlobalValues.tutorial_step == GlobalValues.TutorialStep.CLEAR:
+		GlobalValues.next_tutorial_step()
+	
 	empty_parts()

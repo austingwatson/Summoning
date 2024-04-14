@@ -42,7 +42,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "PartStats",
 "language": "GDScript",
-"path": "res://resources/part_stats.gd"
+"path": "res://resources/parts/part_stats.gd"
 }, {
 "base": "Node2D",
 "class": "PlayerDemon",
@@ -75,12 +75,15 @@ config/icon="res://assets/textures/icon.png"
 [autoload]
 
 OpenedPact="*res://scenes/ui/OpenedPact.tscn"
+DemonPartList="*res://scenes/global/DemonPartList.tscn"
+GlobalValues="*res://scenes/global/GlobalValues.tscn"
 
 [debug]
 
 gdscript/warnings/shadowed_variable=false
 gdscript/warnings/narrowing_conversion=false
 gdscript/warnings/return_value_discarded=false
+gdscript/warnings/integer_division=false
 
 [display]
 

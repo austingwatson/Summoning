@@ -29,6 +29,8 @@ onready var tool_tip = $ToolTip
 
 func _ready():
 	sprite.texture = part_stats.texture
+	if part_type != PartType.FORMED:
+		collision_shape.shape.extents = sprite.texture.get_size() / 2
 
 
 func _unhandled_input(event):
@@ -72,12 +74,25 @@ func disable():
 	
 
 func push():
-	var added_global_positions = Vector2.ZERO
+	var closest_position = Vector2(10000, 10000)
+	var closest_distance = 10000
 	for other_demon_part in other_demon_parts:
-		added_global_positions += other_demon_part.global_position
-	var distance = 100 - self.global_position.distance_to(added_global_positions)
-	var direction = self.global_position.direction_to(added_global_positions)
+		var distance = self.global_position.distance_to(other_demon_part.global_position)
+		if distance < closest_distance:
+			closest_distance = distance
+			closest_position = other_demon_part.global_position
 	
+	#var added_global_positions = Vector2.ZERO
+	#for other_demon_part in other_demon_parts:
+	#	added_global_positions += other_demon_part.global_position
+	#var distance = self.global_position.distance_to(added_global_positions)
+	var distance = closest_distance
+	if distance != 0.0:
+		distance = 1 / distance * 2500
+	var direction = self.global_position.direction_to(closest_position)
+
+	#print(distance)
+
 	apply_central_impulse(-direction * distance)
 	
 

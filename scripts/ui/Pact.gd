@@ -25,6 +25,9 @@ func _input(event):
 	if mouse_inside and event.is_action_released("click"):
 		mouse_down = not mouse_down
 		if mouse_down:
+			if GlobalValues.tutorial_step == GlobalValues.TutorialStep.CLICK_PACT:
+				GlobalValues.next_tutorial_step()
+			
 			OpenedPact.open(self)
 		else:
 			OpenedPact.close()
@@ -60,6 +63,9 @@ func accept():
 
 
 func _on_HighlightArea_mouse_entered():
+	if GlobalValues.tutorial_step < 4:
+		return
+	
 	mouse_inside = true
 	highlight.visible = true
 

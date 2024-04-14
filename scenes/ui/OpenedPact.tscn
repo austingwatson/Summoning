@@ -1,8 +1,8 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scripts/ui/OpenedPact.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/ui_sheet.png" type="Texture" id=2]
-[ext_resource path="res://assets/m3x6.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://resources/default_font.tres" type="DynamicFont" id=3]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -156,13 +156,8 @@ tracks/1/keys = {
 atlas = ExtResource( 2 )
 region = Rect2( 224, 0, 128, 64 )
 
-[sub_resource type="DynamicFont" id=6]
-use_mipmaps = true
-use_filter = true
-extra_spacing_bottom = -5
-font_data = ExtResource( 3 )
-
 [sub_resource type="CircleShape2D" id=7]
+radius = 15.0
 
 [node name="OpenedPact" type="CanvasLayer"]
 visible = false
@@ -186,8 +181,12 @@ anims/pact_failed = SubResource( 9 )
 anims/pact_success = SubResource( 17 )
 
 [node name="Background" type="TextureRect" parent="."]
-anchor_top = 0.5
-anchor_bottom = 0.5
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -184.0
+margin_top = 8.0
+margin_right = -56.0
+margin_bottom = 72.0
 mouse_filter = 2
 texture = SubResource( 5 )
 stretch_mode = 3
@@ -198,19 +197,19 @@ margin_top = 5.0
 margin_right = 117.0
 margin_bottom = 58.0
 custom_colors/font_color = Color( 0.168627, 0.105882, 0.117647, 1 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = ExtResource( 3 )
 text = "This is a paragraph to test the text and see how much we can fit on the screen aka the page of the adsfsafdf"
 autowrap = true
 max_lines_visible = 3
 
 [node name="AcceptPact" type="Area2D" parent="."]
+position = Vector2( 79, 54 )
 collision_layer = 32768
 collision_mask = 0
 monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AcceptPact"]
-position = Vector2( 24, 181 )
 shape = SubResource( 7 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

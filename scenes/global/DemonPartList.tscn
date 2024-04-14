@@ -1,0 +1,60 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://scripts/global/DemonPartList.gd" type="Script" id=1]
+[ext_resource path="res://resources/parts/arms/AlienArm.tres" type="Resource" id=2]
+[ext_resource path="res://resources/parts/arms/BuffArm.tres" type="Resource" id=3]
+[ext_resource path="res://resources/parts/arms/CrabArm.tres" type="Resource" id=4]
+[ext_resource path="res://resources/parts/heads/PyramidHead.tres" type="Resource" id=5]
+[ext_resource path="res://resources/parts/heads/LongHornHead.tres" type="Resource" id=6]
+[ext_resource path="res://resources/parts/legs/AverageLeg.tres" type="Resource" id=7]
+[ext_resource path="res://resources/parts/heads/PigHead.tres" type="Resource" id=8]
+[ext_resource path="res://resources/parts/heads/SandPersonHead.tres" type="Resource" id=9]
+[ext_resource path="res://resources/parts/heads/MaskHead.tres" type="Resource" id=10]
+[ext_resource path="res://resources/parts/heads/SnakeHead.tres" type="Resource" id=11]
+[ext_resource path="res://resources/parts/heads/BirdHead.tres" type="Resource" id=12]
+[ext_resource path="res://resources/parts/legs/BirdLeg.tres" type="Resource" id=13]
+[ext_resource path="res://resources/parts/legs/BoneLeg.tres" type="Resource" id=14]
+[ext_resource path="res://resources/parts/legs/BullLeg.tres" type="Resource" id=15]
+[ext_resource path="res://resources/parts/legs/FootlessLeg.tres" type="Resource" id=16]
+[ext_resource path="res://resources/parts/heads/GirlHead.tres" type="Resource" id=17]
+[ext_resource path="res://resources/parts/legs/ThickLeg.tres" type="Resource" id=18]
+[ext_resource path="res://resources/parts/heads/BullHead.tres" type="Resource" id=19]
+[ext_resource path="res://resources/parts/arms/Wing.tres" type="Resource" id=20]
+[ext_resource path="res://resources/parts/bodies/SmallHeart.tres" type="Resource" id=21]
+[ext_resource path="res://resources/parts/bodies/DeadHeart.tres" type="Resource" id=22]
+[ext_resource path="res://resources/parts/bodies/IronHeart.tres" type="Resource" id=23]
+[ext_resource path="res://resources/parts/bodies/SpikyHeart.tres" type="Resource" id=24]
+[ext_resource path="res://resources/parts/arms/WireArm.tres" type="Resource" id=25]
+[ext_resource path="res://resources/parts/bodies/BigHeart.tres" type="Resource" id=26]
+[ext_resource path="res://resources/parts/bodies/Lungs.tres" type="Resource" id=27]
+[ext_resource path="res://resources/parts/arms/MantisArm.tres" type="Resource" id=28]
+
+[node name="DemonPartList" type="Node"]
+script = ExtResource( 1 )
+alien_arm = ExtResource( 2 )
+buff_arm = ExtResource( 3 )
+crab_arm = ExtResource( 4 )
+mantis_arm = ExtResource( 28 )
+wing = ExtResource( 20 )
+wire_arm = ExtResource( 25 )
+big_heart = ExtResource( 26 )
+dead_heart = ExtResource( 22 )
+iron_heart = ExtResource( 23 )
+lungs = ExtResource( 27 )
+small_heart = ExtResource( 21 )
+spiky_heart = ExtResource( 24 )
+bird_head = ExtResource( 12 )
+bull_head = ExtResource( 19 )
+girl_head = ExtResource( 17 )
+long_horn_head = ExtResource( 6 )
+mask_head = ExtResource( 10 )
+pig_head = ExtResource( 8 )
+pyramid_head = ExtResource( 5 )
+sand_person_head = ExtResource( 9 )
+snake_head = ExtResource( 11 )
+average_leg = ExtResource( 7 )
+bird_leg = ExtResource( 13 )
+bone_leg = ExtResource( 14 )
+bull_leg = ExtResource( 15 )
+footless_leg = ExtResource( 16 )
+thick_leg = ExtResource( 18 )

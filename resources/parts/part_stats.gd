@@ -4,6 +4,7 @@ extends Resource
 const MIN: int = -1
 const MAX: int = 6
 
+export (String, "Head", "Organ", "Arm", "Leg") var type
 export (int, -1, 6) var lethality = 0
 export (int, -1, 6) var endurance = 0
 export (int, -1, 6) var charm = 0

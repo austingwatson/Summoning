@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/entity/DemonPart.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/entity/FormedDemon.gd" type="Script" id=2]
-[ext_resource path="res://resources/Formed.tres" type="Resource" id=3]
+[ext_resource path="res://resources/parts/Formed.tres" type="Resource" id=3]
 [ext_resource path="res://assets/textures/demon_parts.png" type="Texture" id=4]
 
 [sub_resource type="AtlasTexture" id=1]

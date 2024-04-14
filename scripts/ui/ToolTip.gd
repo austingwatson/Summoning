@@ -9,6 +9,7 @@ export (AtlasTexture) var tick
 export (AtlasTexture) var neg_tick
 
 onready var part_icons = $Background/HBoxContainer/PartIcons
+onready var part_type_label = $Background/PartTypeLabel
 
 var stats = []
 
@@ -51,6 +52,8 @@ func reset():
 
 
 func set_info(part_stats: PartStats):
+	part_type_label.text = part_stats.type
+	
 	var current_icon = 0
 	var known_properties = part_stats.known_properties
 	if part_stats.lethality != 0:

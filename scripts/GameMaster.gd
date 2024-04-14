@@ -20,19 +20,23 @@ func next_month(game_screen, current_pacts, current_demon_parts):
 		# tutorial head part
 		var head_part = demon_part_scene.instance()
 		head_part.part_type = DemonPart.PartType.HEAD
-		head_part.part_stats = preload("res://resources/TutorialHead.tres")
+		head_part.part_stats = preload("res://resources/parts/tutorial/TutorialHead.tres")
 		head_part.position = Vector2(150, 150)
 		game_screen.add_demon_part(head_part)
 		
 		# tutorial body part
 		var body_part = demon_part_scene.instance()
 		body_part.part_type = DemonPart.PartType.BODY
-		body_part.part_stats = preload("res://resources/TutorialBody.tres")
+		body_part.part_stats = preload("res://resources/parts/tutorial/TutorialBody.tres")
 		body_part.position = Vector2(50, 150)
 		game_screen.add_demon_part(body_part)
+	elif month == 1:
+		GlobalValues.next_tutorial_step()
+		spawn_pacts(game_screen, min(1, MAX_PACTS - current_pacts))
+		spawn_demon_parts(game_screen, min(4, MAX_DEMON_PARTS - current_demon_parts))
 	else:
 		spawn_pacts(game_screen, min(3, MAX_PACTS - current_pacts))
-		spawn_demon_parts(game_screen, min(6, MAX_DEMON_PARTS - current_demon_parts))
+		spawn_demon_parts(game_screen, min(8, MAX_DEMON_PARTS - current_demon_parts))
 	
 		
 func spawn_pacts(game_screen, amount: int):
@@ -48,7 +52,46 @@ func spawn_pacts(game_screen, amount: int):
 
 
 func spawn_demon_parts(game_screen, amount: int):
-	for _i in range(amount):
-		var demon_part = demon_part_scene.instance()
-		demon_part.global_position = game_screen.get_demon_part_spawn_point()
-		game_screen.add_demon_part(demon_part)
+	var spread = amount / 4
+	for _i in range(spread):
+		var head = demon_part_scene.instance()
+		head.part_stats = DemonPartList.get_random_head()
+		head.part_type = DemonPart.PartType.HEAD
+		head.global_position = game_screen.get_demon_part_spawn_point()
+		game_screen.add_demon_part(head)
+		
+		var body = demon_part_scene.instance()
+		body.part_stats = DemonPartList.get_random_body()
+		body.part_type = DemonPart.PartType.BODY
+		body.global_position = game_screen.get_demon_part_spawn_point()
+		game_screen.add_demon_part(body)
+		
+		var arm = demon_part_scene.instance()
+		arm.part_stats = DemonPartList.get_random_arm()
+		arm.part_type = DemonPart.PartType.ARM
+		arm.global_position = game_screen.get_demon_part_spawn_point()
+		game_screen.add_demon_part(arm)
+		
+		var leg = demon_part_scene.instance()
+		leg.part_stats = DemonPartList.get_random_leg()
+		leg.part_type = DemonPart.PartType.LEG
+		leg.global_position = game_screen.get_demon_part_spawn_point()
+		game_screen.add_demon_part(leg)
+	for _i in range(amount - (spread * 4)):
+		var random = demon_part_scene.instance()
+		var rng = randi() % 4
+		match rng:
+			0:
+				random.part_stats = DemonPartList.get_random_arm()
+				random.part_type = DemonPart.PartType.ARM
+			1:
+				random.part_stats = DemonPartList.get_random_body()
+				random.part_type = DemonPart.PartType.BODY
+			2:
+				random.part_stats = DemonPartList.get_random_head()
+				random.part_type = DemonPart.PartType.HEAD
+			3:
+				random.part_stats = DemonPartList.get_random_leg()
+				random.part_type = DemonPart.PartType.LEG
+		random.global_position = game_screen.get_demon_part_spawn_point()
+		game_screen.add_demon_part(random)
