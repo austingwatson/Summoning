@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/entity/DemonPart.gd" type="Script" id=1]
 [ext_resource path="res://resources/TestDemonPart.tres" type="Resource" id=2]
+[ext_resource path="res://scenes/ui/ToolTip.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -9,7 +10,7 @@
 radius = 20.0
 
 [node name="DemonPart" type="RigidBody2D"]
-collision_mask = 6
+collision_mask = 134
 input_pickable = true
 mass = 10.0
 gravity_scale = 0.0
@@ -18,6 +19,13 @@ angular_damp = 100.0
 script = ExtResource( 1 )
 part_stats = ExtResource( 2 )
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+mouse_filter = 2
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
@@ -25,9 +33,13 @@ shape = SubResource( 1 )
 
 [node name="PushArea" type="Area2D" parent="."]
 collision_layer = 2
+input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PushArea"]
 shape = SubResource( 2 )
+
+[node name="ToolTip" parent="." instance=ExtResource( 3 )]
+visible = false
 
 [connection signal="mouse_entered" from="." to="." method="_on_DemonPart_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_DemonPart_mouse_exited"]

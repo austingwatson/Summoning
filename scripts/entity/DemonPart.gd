@@ -23,10 +23,17 @@ var being_pushed = false
 
 onready var collision_shape = $CollisionShape2D
 onready var sprite = $Sprite
+onready var tool_tip = $ToolTip
+
+
+func _ready():
+	part_stats.set_known_properties()
+
 
 func _unhandled_input(event):
 	if mouse_inside and event.is_action_pressed("grab"):
 		mouse_down = true
+		tool_tip.visible = false
 		apply_central_impulse(Vector2(0, -LIFT_CONSTANT))
 	elif mouse_down and event.is_action_released("grab"):
 		mouse_down = false
@@ -74,10 +81,14 @@ func fling(direction):
 
 func _on_DemonPart_mouse_entered():
 	mouse_inside = true
+	if part_type != PartType.FORMED and not mouse_down:
+		tool_tip.set_info(part_stats)
+		tool_tip.visible = true
 
 
 func _on_DemonPart_mouse_exited():
 	mouse_inside = false
+	tool_tip.visible = false
 
 
 func _on_PushArea_body_entered(body):

@@ -1,0 +1,217 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://scripts/ui/OpenedPact.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/ui_sheet.png" type="Texture" id=2]
+[ext_resource path="res://assets/m3x6.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 224, 128, 128, 64 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 224, 64, 128, 64 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 224, 0, 128, 64 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 352, 0, 128, 64 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 2 )
+region = Rect2( 352, 64, 128, 64 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 2 )
+region = Rect2( 496, 64, 128, 64 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 2 )
+region = Rect2( 640, 64, 128, 64 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 2 )
+region = Rect2( 768, 64, 128, 64 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 2 )
+region = Rect2( 896, 64, 128, 64 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 2 )
+region = Rect2( 1024, 64, 128, 64 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 2 )
+region = Rect2( 1152, 64, 128, 64 )
+
+[sub_resource type="Animation" id=18]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "open_pact"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ 0 ],
+"method": "set_background"
+}, {
+"args": [ 1 ],
+"method": "set_background"
+}, {
+"args": [ 2 ],
+"method": "set_background"
+} ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "pact_failed"
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 3 ],
+"method": "set_background"
+} ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "pact_success"
+length = 0.6
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ 4 ],
+"method": "set_background"
+}, {
+"args": [ 5 ],
+"method": "set_background"
+}, {
+"args": [ 6 ],
+"method": "set_background"
+}, {
+"args": [ 7 ],
+"method": "set_background"
+}, {
+"args": [ 8 ],
+"method": "set_background"
+}, {
+"args": [ 9 ],
+"method": "set_background"
+}, {
+"args": [ 10 ],
+"method": "set_background"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background/Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 224, 0, 128, 64 )
+
+[sub_resource type="DynamicFont" id=6]
+use_mipmaps = true
+use_filter = true
+extra_spacing_bottom = -5
+font_data = ExtResource( 3 )
+
+[sub_resource type="CircleShape2D" id=7]
+
+[node name="OpenedPact" type="CanvasLayer"]
+visible = false
+script = ExtResource( 1 )
+frame1 = SubResource( 1 )
+frame2 = SubResource( 2 )
+frame3 = SubResource( 3 )
+failed = SubResource( 8 )
+success1 = SubResource( 10 )
+success2 = SubResource( 11 )
+success3 = SubResource( 12 )
+success4 = SubResource( 13 )
+success5 = SubResource( 14 )
+success6 = SubResource( 15 )
+success7 = SubResource( 16 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 18 )
+anims/open_pact = SubResource( 4 )
+anims/pact_failed = SubResource( 9 )
+anims/pact_success = SubResource( 17 )
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+mouse_filter = 2
+texture = SubResource( 5 )
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Background"]
+margin_left = 15.0
+margin_top = 5.0
+margin_right = 117.0
+margin_bottom = 58.0
+custom_colors/font_color = Color( 0.168627, 0.105882, 0.117647, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "This is a paragraph to test the text and see how much we can fit on the screen aka the page of the adsfsafdf"
+autowrap = true
+max_lines_visible = 3
+
+[node name="AcceptPact" type="Area2D" parent="."]
+collision_layer = 32768
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AcceptPact"]
+position = Vector2( 24, 181 )
+shape = SubResource( 7 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="input_event" from="AcceptPact" to="." method="_on_AcceptPact_input_event"]

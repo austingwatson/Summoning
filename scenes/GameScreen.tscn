@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/entity/DemonAltar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/textures/workshop.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/ui/HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/entity/SummoningCircle.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/entity/Hook.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/entity/PlayerDemon.tscn" type="PackedScene" id=7]
 
 [sub_resource type="SegmentShape2D" id=1]
 a = Vector2( 0, 270 )
@@ -71,9 +72,32 @@ centered = false
 [node name="DemonAltar" parent="." instance=ExtResource( 1 )]
 position = Vector2( 286, 120 )
 
+[node name="PlayerDemon" parent="." instance=ExtResource( 7 )]
+position = Vector2( 432, 104 )
+
 [node name="DemonParts" type="Node2D" parent="."]
 
 [node name="Pacts" type="Node2D" parent="."]
+
+[node name="PactLocations" type="Node2D" parent="."]
+
+[node name="Position1" type="Position2D" parent="PactLocations"]
+position = Vector2( 16, 16 )
+
+[node name="Position2" type="Position2D" parent="PactLocations"]
+position = Vector2( 32, 32 )
+
+[node name="Position3" type="Position2D" parent="PactLocations"]
+position = Vector2( 16, 48 )
+
+[node name="Position4" type="Position2D" parent="PactLocations"]
+position = Vector2( 32, 64 )
+
+[node name="Position5" type="Position2D" parent="PactLocations"]
+position = Vector2( 16, 80 )
+
+[node name="Position6" type="Position2D" parent="PactLocations"]
+position = Vector2( 32, 96 )
 
 [node name="Hook" parent="." instance=ExtResource( 6 )]
 position = Vector2( 303, 56 )
@@ -99,6 +123,7 @@ wait_time = 5.0
 one_shot = true
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
+visible = false
 
 [connection signal="pressed" from="Month/NextMonthButton" to="." method="_on_NextMonthButton_pressed"]
 [connection signal="timeout" from="Month/DisableMonthTimer" to="." method="_on_DisableMonthTimer_timeout"]

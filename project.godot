@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/entity/DemonAltar.gd"
 }, {
+"base": "Area2D",
+"class": "DemonEat",
+"language": "GDScript",
+"path": "res://scripts/entity/DemonEat.gd"
+}, {
 "base": "RigidBody2D",
 "class": "DemonPart",
 "language": "GDScript",
@@ -39,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://resources/part_stats.gd"
 }, {
+"base": "Node2D",
+"class": "PlayerDemon",
+"language": "GDScript",
+"path": "res://scripts/entity/PlayerDemon.gd"
+}, {
 "base": "Area2D",
 "class": "SummoningCircle",
 "language": "GDScript",
@@ -46,11 +56,13 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "DemonAltar": "",
+"DemonEat": "",
 "DemonPart": "",
 "FormedDemon": "",
 "FormedDemonHolder": "",
 "Hook": "",
 "PartStats": "",
+"PlayerDemon": "",
 "SummoningCircle": ""
 }
 
@@ -60,13 +72,23 @@ config/name="Summoning"
 run/main_scene="res://scenes/TitleScreen.tscn"
 config/icon="res://assets/textures/icon.png"
 
+[autoload]
+
+OpenedPact="*res://scenes/ui/OpenedPact.tscn"
+
+[debug]
+
+gdscript/warnings/shadowed_variable=false
+gdscript/warnings/narrowing_conversion=false
+gdscript/warnings/return_value_discarded=false
+
 [display]
 
 window/size/width=480
 window/size/height=270
 window/size/test_width=1280
 window/size/test_height=720
-window/stretch/mode="2d"
+window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"
 
 [gui]
@@ -76,6 +98,11 @@ common/drop_mouse_on_gui_input_disabled=true
 [input]
 
 grab={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+click={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
@@ -90,6 +117,7 @@ grab={
 2d_physics/layer_5="FormedDemon"
 2d_physics/layer_6="Hook"
 2d_physics/layer_7="SummoningCircle"
+2d_physics/layer_8="DemonEat"
 
 [physics]
 
