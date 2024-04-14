@@ -66,7 +66,7 @@ func _on_Accept_pressed():
 		var formed_demon = formed_demon_scene.instance()
 		get_parent().add_child(formed_demon)
 		
-		formed_demon.add_part_stats(parts_stats)
+		formed_demon.form(parts.values())
 		set_formed_dummy(formed_demon, self.global_position)
 	
 	empty_parts()

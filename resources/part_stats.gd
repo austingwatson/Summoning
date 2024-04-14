@@ -8,8 +8,9 @@ export (int, -1, 6) var lethality = 0
 export (int, -1, 6) var endurance = 0
 export (int, -1, 6) var charm = 0
 export (int, -1, 6) var speed = 0
+export (AtlasTexture) var texture
 
-var known_properties = {
+export var known_properties = {
 	"lethality": false,
 	"endurance": false,
 	"charm": false,
@@ -41,17 +42,6 @@ func generate_random(zero_min, max_stats: int):
 				charm = stat
 			3:
 				speed = stat
-
-
-func set_known_properties():
-	if lethality == 0:
-		known_properties["lethality"] = true
-	if endurance == 0:
-		known_properties["endurance"] = true
-	if charm == 0:
-		known_properties["charm"] = true
-	if speed == 0:
-		known_properties["speed"] = true
 
 
 func know_random_property():

@@ -22,21 +22,26 @@ var other_demon_parts = []
 var being_pushed = false
 
 onready var collision_shape = $CollisionShape2D
+onready var flame = $Flame
 onready var sprite = $Sprite
 onready var tool_tip = $ToolTip
 
 
 func _ready():
-	part_stats.set_known_properties()
+	sprite.texture = part_stats.texture
 
 
 func _unhandled_input(event):
 	if mouse_inside and event.is_action_pressed("grab"):
 		mouse_down = true
 		tool_tip.visible = false
+		flame.visible = true
+		flame.frame = 0
+		flame.play("spark")
 		apply_central_impulse(Vector2(0, -LIFT_CONSTANT))
 	elif mouse_down and event.is_action_released("grab"):
 		mouse_down = false
+		flame.visible = false
 		apply_central_impulse(Vector2(0, LIFT_CONSTANT))
 
 
@@ -63,6 +68,7 @@ func disable():
 	collision_shape.set_deferred("disabled", true)
 	set_deferred("mode", RigidBody2D.MODE_KINEMATIC)
 	mouse_down = false
+	flame.visible = false
 	
 
 func push():
@@ -106,3 +112,7 @@ func _on_PushArea_body_exited(body):
 
 func get_class():
 	return "DemonPart"
+
+
+func _on_Flame_animation_finished():
+	flame.play("holding")
