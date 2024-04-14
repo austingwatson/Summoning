@@ -10,6 +10,7 @@ export (int, -1, 6) var endurance = 0
 export (int, -1, 6) var charm = 0
 export (int, -1, 6) var speed = 0
 export (AtlasTexture) var texture
+export (PackedScene) var paper_doll_scene
 
 export var known_properties = {
 	"lethality": false,

@@ -2,9 +2,11 @@ class_name FormedDemonHolder
 extends Area2D
 
 var has_formed_demon = false
+var formed_demon = null
 
 
 func set_formed_dummy(formed_demon, home_position):
+	self.formed_demon = formed_demon
 	formed_demon.connect("new_home_set", self, "_on_FormedDummy_new_home_set")
 	formed_demon.set_home(home_position)
 

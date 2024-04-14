@@ -11,7 +11,7 @@ export (AtlasTexture) var body4
 var original_position = Vector2.ZERO
 var bodies = []
 
-onready var head = $Parts/Head
+onready var parts = $Parts
 
 
 func _ready():
@@ -27,8 +27,8 @@ func _physics_process(_delta):
 	
 
 func form(demon_parts_array: Array):
-	bodies.shuffle()
-	sprite.texture = bodies[0]
+	var body = randi() % bodies.size()
+	sprite.texture = bodies[body]
 	for demon_part in demon_parts_array:
 		if demon_part == null:
 			continue
@@ -38,9 +38,10 @@ func form(demon_parts_array: Array):
 		self.part_stats.charm += demon_part.part_stats.charm
 		self.part_stats.speed += demon_part.part_stats.speed
 		
-		match demon_part.part_type:
-			DemonPart.PartType.HEAD:
-				head.texture = demon_part.part_stats.texture
+		if demon_part.part_type != DemonPart.PartType.BODY:
+			var paper_doll = demon_part.part_stats.paper_doll_scene.instance()
+			paper_doll.adjust(body)
+			parts.add_child(paper_doll)
 
 
 func set_home(global_position):

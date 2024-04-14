@@ -1,24 +1,156 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/entity/FormedDemonHolder.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/entity/Hook.gd" type="Script" id=2]
+[ext_resource path="res://assets/textures/ui_sheet.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -4, 22.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BackgroundHook:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ForegroundHook:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -8, 20 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HookBobRange/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2, 17 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "bob_hook"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -4, 22.5 ), Vector2( -4, 30.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BackgroundHook:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 8 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ForegroundHook:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -8, 20 ), Vector2( -8, 28 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HookBobRange/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 17 ), Vector2( 1, 24 ) ]
+}
 
 [sub_resource type="RectangleShape2D" id=1]
 resource_local_to_scene = true
-extents = Vector2( 10, 9.5 )
+extents = Vector2( 10, 10.5 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 4, 189, 28, 67 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 36, 235, 12, 16 )
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 30.0
 
 [node name="Hook" instance=ExtResource( 1 )]
 collision_layer = 32
 collision_mask = 16
 script = ExtResource( 2 )
 
-[node name="CollisionShape2D" parent="." index="0"]
-position = Vector2( -11, -18 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
+anims/RESET = SubResource( 4 )
+anims/bob_hook = SubResource( 5 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( -4, 22.5 )
 shape = SubResource( 1 )
 
-[node name="Polygon2D" type="Polygon2D" parent="." index="1"]
-color = Color( 0.533333, 0.219608, 0.219608, 1 )
-polygon = PoolVector2Array( -9, -19, -9, -14, -15, -14, -17, -21, -6, -25, -3, -13, -3, 23, 5, 23, 5, -24, -5, -31, -21, -23, -18, -11, -8, -9, -6, -14 )
+[node name="BackgroundHook" type="Sprite" parent="." index="2"]
+z_index = 1
+texture = SubResource( 2 )
+
+[node name="ForegroundHook" type="Sprite" parent="." index="3"]
+visible = false
+position = Vector2( -8, 20 )
+z_index = 4
+texture = SubResource( 3 )
+
+[node name="HookBobRange" type="Area2D" parent="." index="4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HookBobRange" index="0"]
+position = Vector2( 2, 17 )
+shape = SubResource( 6 )
 
 [connection signal="body_entered" from="." to="." method="_on_Hook_body_entered"]
-[connection signal="mouse_entered" from="." to="." method="_on_Hook_mouse_entered"]
+[connection signal="mouse_entered" from="HookBobRange" to="." method="_on_HookBobRange_mouse_entered"]
+[connection signal="mouse_exited" from="HookBobRange" to="." method="_on_HookBobRange_mouse_exited"]

@@ -1,7 +1,8 @@
-[gd_resource type="Resource" load_steps=4 format=2]
+[gd_resource type="Resource" load_steps=5 format=2]
 
 [ext_resource path="res://resources/parts/part_stats.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/demon_parts.png" type="Texture" id=2]
+[ext_resource path="res://scenes/paper_doll/arm/WireArmPD.tscn" type="PackedScene" id=3]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -15,6 +16,7 @@ endurance = 0
 charm = 0
 speed = 0
 texture = SubResource( 1 )
+paper_doll_scene = ExtResource( 3 )
 known_properties = {
 "charm": false,
 "endurance": false,

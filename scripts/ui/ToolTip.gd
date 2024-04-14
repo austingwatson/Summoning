@@ -23,7 +23,7 @@ func _ready():
 	stat1.append(stat1_grid[4])
 	stat1.append(stat1_grid[2])
 	stat1.append(stat1_grid[5])
-	stats.append(stat1)
+	stats.append(stat1_grid)
 	
 	var stat2 = []
 	var stat2_grid = $Background/HBoxContainer/Stats/Stat2.get_children()
@@ -33,7 +33,7 @@ func _ready():
 	stat2.append(stat2_grid[4])
 	stat2.append(stat2_grid[2])
 	stat2.append(stat2_grid[5])
-	stats.append(stat2)
+	stats.append(stat2_grid)
 	
 	var stat3 = []
 	var stat3_grid = $Background/HBoxContainer/Stats/Stat3.get_children()
@@ -43,7 +43,7 @@ func _ready():
 	stat3.append(stat3_grid[4])
 	stat3.append(stat3_grid[2])
 	stat3.append(stat3_grid[5])
-	stats.append(stat3)
+	stats.append(stat3_grid)
 
 
 func reset():
