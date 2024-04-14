@@ -1,25 +1,42 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/ui/Pact.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/ui_sheet.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 160, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 160, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 192, 0, 32, 32 )
 
 [node name="Pact" type="Node2D"]
 script = ExtResource( 1 )
+new_pact = SubResource( 6 )
+old_pact = SubResource( 7 )
+expiring_pact = SubResource( 8 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 85.0
-margin_bottom = 45.0
-color = Color( 0, 0.376471, 0.964706, 1 )
+[node name="Highlight" type="Sprite" parent="."]
+visible = false
+texture = SubResource( 1 )
 
-[node name="Text" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
-text = "Strength"
+[node name="Pact" type="Sprite" parent="."]
 
-[node name="Accept" type="Button" parent="."]
-margin_left = 63.0
-margin_top = 24.0
-margin_right = 84.0
-margin_bottom = 44.0
-text = "A"
+[node name="HighlightArea" type="ColorRect" parent="."]
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 16.0
+margin_bottom = 16.0
+color = Color( 1, 1, 1, 0 )
 
-[connection signal="pressed" from="Accept" to="." method="_on_Accept_pressed"]
+[connection signal="mouse_entered" from="HighlightArea" to="." method="_on_HighlightArea_mouse_entered"]
+[connection signal="mouse_exited" from="HighlightArea" to="." method="_on_HighlightArea_mouse_exited"]

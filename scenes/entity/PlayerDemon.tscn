@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/entity/DemonEat.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/entity/PlayerDemon.gd" type="Script" id=2]
+[ext_resource path="res://assets/textures/workshop.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 384, 32, 96, 144 )
+
+[node name="PlayerDemon" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = SubResource( 1 )
+
+[node name="DemonEat" parent="." instance=ExtResource( 1 )]
+position = Vector2( -12, -33 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -22, -35, -2, -36, -17, -27 )
+
+[connection signal="close_mouth" from="DemonEat" to="." method="_on_DemonEat_close_mouth"]
+[connection signal="open_mouth" from="DemonEat" to="." method="_on_DemonEat_open_mouth"]

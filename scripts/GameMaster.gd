@@ -31,8 +31,8 @@ func next_month(game_screen, current_pacts, current_demon_parts):
 		body_part.position = Vector2(50, 150)
 		game_screen.add_demon_part(body_part)
 	else:
-		spawn_pacts(game_screen, min(2, MAX_PACTS - current_pacts))
-		spawn_demon_parts(game_screen, min(4, MAX_DEMON_PARTS - current_demon_parts))
+		spawn_pacts(game_screen, min(3, MAX_PACTS - current_pacts))
+		spawn_demon_parts(game_screen, min(6, MAX_DEMON_PARTS - current_demon_parts))
 	
 		
 func spawn_pacts(game_screen, amount: int):
@@ -48,8 +48,7 @@ func spawn_pacts(game_screen, amount: int):
 
 
 func spawn_demon_parts(game_screen, amount: int):
-	for i in range(amount):
+	for _i in range(amount):
 		var demon_part = demon_part_scene.instance()
 		demon_part.global_position = game_screen.get_demon_part_spawn_point()
-		demon_part.part_type = i
 		game_screen.add_demon_part(demon_part)
