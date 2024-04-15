@@ -11,11 +11,6 @@ export (int, "NONE", "LEFT_ARM", "LEFT_LEG") var back_part_type = BackType.NONE
 
 onready var back_part = $BackPart
 onready var back_part_position = $BackPartPosition
-
-
-func _physics_process(_delta):
-	if back_part_type != BackType.NONE:
-		back_part.offset = back_part_position.position
 		
 
 func set_position(body):
@@ -26,3 +21,4 @@ func set_position(body):
 			back_part.position = body.left_arm.position
 		BackType.LEFT_LEG:
 			back_part.position = body.left_leg.position
+	back_part.position -= back_part_position.position
