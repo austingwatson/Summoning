@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/analog-appliance-button-2-185277.mp3-d1a3cd397d248d4bb2f7a96618be4065.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/analog-appliance-button-2-185277.mp3"
+dest_files=[ "res://.import/analog-appliance-button-2-185277.mp3-d1a3cd397d248d4bb2f7a96618be4065.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -3,6 +3,7 @@ extends Area2D
 
 signal open_mouth
 signal close_mouth
+signal eat_part
 
 var demon_part = null
 
@@ -12,6 +13,7 @@ func _physics_process(_delta):
 		demon_part.part_stats.know_all_properties()
 		demon_part.queue_free()
 		demon_part = null
+		emit_signal("eat_part")
 
 
 func _on_DemonEat_body_entered(body):

@@ -27,7 +27,7 @@ func skip_tutorial():
 	
 	tutorial_step = TutorialStep.NEXT_MONTH
 	game_screen._on_NextMonthButton_pressed()
-	print(tutorial_step)
+	#print(tutorial_step)
 
 
 func next_tutorial_step():

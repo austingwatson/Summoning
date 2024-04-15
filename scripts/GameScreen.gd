@@ -17,10 +17,16 @@ onready var top = $DemonPartSpawnBoundary/Top
 onready var bottom = $DemonPartSpawnBoundary/Bottom
 
 onready var pact_locations = $PactLocations
+onready var hud = $HUD
+
+var pacts_success = 0
+var pacts_fail = 0
+var parts_eaten = 0
 
 
 func _ready():
 	GlobalValues.game_screen = self
+	MonthlyReport.game_screen = self
 	game_master.next_month(self, pacts.get_child_count(), demon_parts.get_child_count())
 	
 	# for debugging only, comment out for full game
@@ -35,6 +41,7 @@ func skip_tutorial():
 	
 	GlobalValues.skip_tutorial()
 	$DemonAltar.empty_parts()
+	start_month()
 
 
 func add_pact(pact):
@@ -78,15 +85,22 @@ func flame_off():
 	player_demon.flame_off()
 	
 
-func _on_pact_accepted(accepted, pact_position):	
+func start_month():
+	game_master.next_month(self, pacts.get_child_count(), demon_parts.get_child_count())
+	disable_month_timer.start()
+	
+	pacts_success = 0
+	pacts_fail = 0
+	parts_eaten = 0
+	
+
+func _on_pact_accepted(accepted, pact_position, soul_amount):
 	pact_locations_occupied[pact_position] = false
 	if accepted:
-		print("Pact Accepted")
+		pacts_success += 1
+		hud.add_soul(soul_amount)
 	else:
-		print("Pact Not Accepted")
-		failures_left -= 1
-		if failures_left <= 0:
-			print("Game Over")
+		pacts_fail += 1
 
 
 func _on_NextMonthButton_pressed():
@@ -96,10 +110,13 @@ func _on_NextMonthButton_pressed():
 	for pact in pacts.get_children():
 		pact.next_month()
 	
-	game_master.next_month(self, pacts.get_child_count(), demon_parts.get_child_count())
-	disable_month_timer.start()
+	MonthlyReport.open(pacts_success, pacts_fail, parts_eaten, [9, 9, 9, 9])
 	next_month_button.disabled = true
 
 
 func _on_DisableMonthTimer_timeout():
 	next_month_button.disabled = false
+
+
+func _on_PlayerDemon_eat_part():
+	parts_eaten += 1

@@ -46,6 +46,9 @@ func spawn_pacts(game_screen, amount: int):
 		offset = last_pact.global_position.x + last_pact.get_width() + 5
 	
 	for i in range(amount):
+		if not is_instance_valid(game_screen):
+			return
+		
 		var pact = pact_scene.instance()
 		pact.position = Vector2(i * (pact.get_width() + 5) + offset, 10)
 		game_screen.add_pact(pact)
@@ -55,6 +58,9 @@ func spawn_pacts(game_screen, amount: int):
 func spawn_demon_parts(game_screen, amount: int):
 	var spread = amount / 4
 	for _i in range(spread):
+		if not is_instance_valid(game_screen):
+			return
+		
 		var head = demon_part_scene.instance()
 		head.part_stats = DemonPartList.get_random_head()
 		head.part_type = DemonPart.PartType.HEAD

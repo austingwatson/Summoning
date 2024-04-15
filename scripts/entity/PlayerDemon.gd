@@ -1,6 +1,8 @@
 class_name PlayerDemon
 extends Node2D
 
+signal eat_part
+
 onready var body = $Body
 onready var hand = $Hand
 
@@ -51,3 +53,7 @@ func _on_Hand_animation_finished():
 		clicked = false
 	elif hand.animation == "end_fire":
 		hand.play("idle")
+
+
+func _on_DemonEat_eat_part():
+	emit_signal("eat_part")

@@ -1,0 +1,235 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://scripts/global/MonthlyReport.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/ui_sheet.png" type="Texture" id=2]
+[ext_resource path="res://resources/default_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://scenes/ui/SoulButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/m3x6.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 80, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 80, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 272, 224, 224 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 32
+font_data = ExtResource( 5 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 656, 368, 64, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 656, 400, 64, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 80, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 656, 368, 64, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 656, 400, 64, 32 )
+
+[node name="MonthlyReport" type="Node"]
+script = ExtResource( 1 )
+base_soul = SubResource( 8 )
+filled_soul = SubResource( 9 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -112.0
+margin_top = -112.0
+margin_right = 112.0
+margin_bottom = 112.0
+texture = SubResource( 1 )
+stretch_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+
+[node name="MonthlyReportLabel" type="Label" parent="CanvasLayer/Background/VBoxContainer"]
+margin_top = 24.0
+margin_right = 224.0
+margin_bottom = 50.0
+custom_fonts/font = SubResource( 7 )
+text = "Monthly Report"
+align = 1
+
+[node name="PactsSuccess" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer"]
+margin_top = 54.0
+margin_right = 224.0
+margin_bottom = 67.0
+alignment = 1
+
+[node name="Fulfilled" type="Label" parent="CanvasLayer/Background/VBoxContainer/PactsSuccess"]
+margin_left = 79.0
+margin_right = 137.0
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 3 )
+text = "Pacts Fulfilled:"
+align = 1
+
+[node name="Value" type="Label" parent="CanvasLayer/Background/VBoxContainer/PactsSuccess"]
+margin_left = 141.0
+margin_right = 145.0
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 3 )
+text = "0"
+align = 1
+
+[node name="PactsFailed" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer"]
+margin_top = 71.0
+margin_right = 224.0
+margin_bottom = 84.0
+alignment = 1
+
+[node name="Failed" type="Label" parent="CanvasLayer/Background/VBoxContainer/PactsFailed"]
+margin_left = 84.0
+margin_right = 132.0
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 3 )
+text = "Pacts Failed:"
+align = 1
+
+[node name="Value" type="Label" parent="CanvasLayer/Background/VBoxContainer/PactsFailed"]
+margin_left = 136.0
+margin_right = 140.0
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 3 )
+text = "0"
+align = 1
+
+[node name="PartsEaten" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer"]
+margin_top = 88.0
+margin_right = 224.0
+margin_bottom = 101.0
+alignment = 1
+
+[node name="Eaten" type="Label" parent="CanvasLayer/Background/VBoxContainer/PartsEaten"]
+margin_left = 84.0
+margin_right = 131.0
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 3 )
+text = "Parts Eaten:"
+align = 1
+
+[node name="Value" type="Label" parent="CanvasLayer/Background/VBoxContainer/PartsEaten"]
+margin_left = 135.0
+margin_right = 139.0
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 3 )
+text = "0"
+align = 1
+
+[node name="Souls" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer"]
+margin_top = 105.0
+margin_right = 224.0
+margin_bottom = 163.0
+custom_constants/separation = 15
+alignment = 1
+
+[node name="Wrath" parent="CanvasLayer/Background/VBoxContainer/Souls" instance=ExtResource( 4 )]
+margin_left = 25.0
+margin_right = 57.0
+margin_bottom = 58.0
+soul_type = 1
+
+[node name="Envy" parent="CanvasLayer/Background/VBoxContainer/Souls" instance=ExtResource( 4 )]
+margin_left = 72.0
+margin_right = 104.0
+margin_bottom = 58.0
+soul_type = 2
+
+[node name="Pride" parent="CanvasLayer/Background/VBoxContainer/Souls" instance=ExtResource( 4 )]
+margin_left = 119.0
+margin_right = 151.0
+margin_bottom = 58.0
+
+[node name="Greed" parent="CanvasLayer/Background/VBoxContainer/Souls" instance=ExtResource( 4 )]
+margin_left = 166.0
+margin_right = 198.0
+margin_bottom = 58.0
+soul_type = 3
+
+[node name="Buttons" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer"]
+margin_top = 167.0
+margin_right = 224.0
+margin_bottom = 200.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Clear" type="TextureButton" parent="CanvasLayer/Background/VBoxContainer/Buttons"]
+margin_left = 20.0
+margin_right = 84.0
+margin_bottom = 33.0
+texture_normal = SubResource( 3 )
+texture_hover = SubResource( 4 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Background/VBoxContainer/Buttons/Clear"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 3 )
+text = "Clear"
+align = 1
+valign = 1
+
+[node name="TotalSouls" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Buttons"]
+margin_left = 104.0
+margin_right = 120.0
+margin_bottom = 33.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Background/VBoxContainer/Buttons/TotalSouls"]
+margin_right = 16.0
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 3 )
+text = "0/2"
+align = 1
+valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Background/VBoxContainer/Buttons/TotalSouls"]
+margin_top = 17.0
+margin_right = 16.0
+margin_bottom = 33.0
+texture = SubResource( 6 )
+stretch_mode = 3
+
+[node name="Commit" type="TextureButton" parent="CanvasLayer/Background/VBoxContainer/Buttons"]
+margin_left = 140.0
+margin_right = 204.0
+margin_bottom = 33.0
+texture_normal = SubResource( 2 )
+texture_hover = SubResource( 5 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Background/VBoxContainer/Buttons/Commit"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 3 )
+text = "Commit"
+align = 1
+valign = 1
+
+[connection signal="give_soul" from="CanvasLayer/Background/VBoxContainer/Souls/Wrath" to="." method="_on_give_soul"]
+[connection signal="give_soul" from="CanvasLayer/Background/VBoxContainer/Souls/Envy" to="." method="_on_give_soul"]
+[connection signal="give_soul" from="CanvasLayer/Background/VBoxContainer/Souls/Pride" to="." method="_on_give_soul"]
+[connection signal="give_soul" from="CanvasLayer/Background/VBoxContainer/Souls/Greed" to="." method="_on_give_soul"]
+[connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/Buttons/Clear" to="." method="_on_Clear_pressed"]
+[connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/Buttons/Commit" to="." method="_on_Commit_pressed"]

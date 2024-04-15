@@ -14,6 +14,7 @@ export (AtlasTexture) var success7
 
 onready var animation_player = $AnimationPlayer
 onready var background = $Background
+onready var label = $Background/Label
 
 var pact = null
 var frames = []
@@ -31,7 +32,6 @@ func _ready():
 	frames.append(success5)
 	frames.append(success6)
 	frames.append(success7)
-	print(frames)
 
 
 func open(pact):
@@ -42,6 +42,10 @@ func open(pact):
 		self.pact.mouse_inside = false
 		self.pact.mouse_down = false
 	self.pact = pact
+	label.text = ""
+	for line in self.pact.lines:
+		label.text += line
+		label.text += "\n"
 	
 
 func close():

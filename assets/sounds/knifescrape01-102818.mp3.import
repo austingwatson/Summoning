@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/knifescrape01-102818.mp3-469e325337ae3d9525d98cda4e71ecda.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/knifescrape01-102818.mp3"
+dest_files=[ "res://.import/knifescrape01-102818.mp3-469e325337ae3d9525d98cda4e71ecda.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

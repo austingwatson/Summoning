@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/handle-paper-foley-1-172688.mp3-197d88d4d0dbc524f37c52b086ae55cc.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/handle-paper-foley-1-172688.mp3"
+dest_files=[ "res://.import/handle-paper-foley-1-172688.mp3-197d88d4d0dbc524f37c52b086ae55cc.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

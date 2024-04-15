@@ -1,6 +1,6 @@
 extends Node2D
 
-signal accepted(accepted, pact_position)
+signal accepted(accepted, pact_position, soul_amount)
 
 export (AtlasTexture) var new_pact
 export (AtlasTexture) var old_pact
@@ -18,11 +18,24 @@ var mouse_inside = false
 var mouse_down = false
 var pact_position = 0
 
+var lines_1 = []
+var lines_2 = []
+var lines_3 = []
+var task_1_words = ["a trivial", "an easy", "a moderate", "a significant", "a difficult", "an impossible"]
+var task_2_words = ["a little", "somewhat", "moderately", "very", "extremely", "impossibly"]
+var lines = []
+var stats = [0, 1, 2, 3]
+
+var soul_worth = 1
+
+
 func _ready():
-	part_stats.generate_random(true, 2)
+	part_stats.generate_random(false, 1)
 	pact.texture = new_pact
 	
 	animated_sprite.play("smoke")
+	
+	set_words()
 	
 	
 func _input(event):
@@ -39,6 +52,75 @@ func _input(event):
 
 func get_width() -> int:
 	return 85
+	
+func set_words():
+	lines_1.append("I need a lethal servant for {task_1} task.")
+	lines_1.append("I need a durable servant for {task_1} task.")
+	lines_1.append("I need a charming servant for {task_1} task.")
+	lines_1.append("I need a swift servant for {task_1} task.")
+	
+	lines_2.append("They must be {task_2} lethal.")
+	lines_2.append("They must be {task_2} durable.")
+	lines_2.append("They must be {task_2} charming.")
+	lines_2.append("They must be {task_2} swift.")
+	
+	lines_3.append("They cannot be too lethal.")
+	lines_3.append("They cannot be too durable.")
+	lines_3.append("They cannot be too charming.")
+	lines_3.append("They cannot be too swift.")
+	
+	format_sentence()	
+	
+
+func format_sentence():
+	stats.shuffle()
+	
+	var index = 0
+	for i in stats:
+		match i:
+			0:
+				if part_stats.lethality > 0:
+					if index == 0:
+						lines.append(lines_1[0].replace("{task_1}", task_1_words[part_stats.lethality - 1]))
+					else:
+						lines.append(lines_2[0].replace("{task_2}", task_2_words[part_stats.lethality - 1]))
+					index += 1
+			1:
+				if part_stats.endurance > 0:
+					if index == 0:
+						lines.append(lines_1[1].replace("{task_1}", task_1_words[part_stats.endurance - 1]))
+					else:
+						lines.append(lines_2[1].replace("{task_2}", task_2_words[part_stats.endurance - 1]))
+					index += 1
+			2:
+				if part_stats.charm > 0:
+					if index == 0:
+						lines.append(lines_1[2].replace("{task_1}", task_1_words[part_stats.charm - 1]))
+					else:
+						lines.append(lines_2[2].replace("{task_2}", task_2_words[part_stats.charm - 1]))
+					index += 1
+			3:
+				if part_stats.speed > 0:
+					if index == 0:
+						lines.append(lines_1[3].replace("{task_1}", task_1_words[part_stats.speed - 1]))
+					else:
+						lines.append(lines_2[3].replace("{task_2}", task_2_words[part_stats.speed - 1]))
+					index += 1
+	for i in stats:
+		match i:
+			0:
+				if part_stats.lethality < 0:
+					lines.append(lines_3[0])
+			1:
+				if part_stats.endurance < 0:
+					lines.append(lines_3[1])
+			2:
+				if part_stats.charm < 0:
+					lines.append(lines_3[2])
+			3:
+				if part_stats.speed < 0:
+					lines.append(lines_3[3])
+	#print(lines)
 
 
 func next_month():
@@ -50,7 +132,7 @@ func next_month():
 		1:
 			pact.texture = expiring_pact
 		0:
-			emit_signal("accepted", false, pact_position)
+			emit_signal("accepted", false, pact_position, 0)
 			remove = true
 			pact.visible = false
 			highlight.visible = false
@@ -60,9 +142,9 @@ func next_month():
 
 func accept():
 	var formed_demon = summoning_circle.current_formed_demon
-	if formed_demon != null and summoning_circle.animated_sprite.animation == "ready":
+	if formed_demon != null and (summoning_circle.animated_sprite.animation == "ready" or summoning_circle.animated_sprite.animation == "demon_on"):
 		var accepted = part_stats.check_score(formed_demon.part_stats, 0)
-		emit_signal("accepted", accepted, pact_position)
+		emit_signal("accepted", accepted, pact_position, soul_worth)
 		formed_demon.queue_free()
 		summoning_circle.current_formed_demon = null
 		summoning_circle.has_formed_demon = false

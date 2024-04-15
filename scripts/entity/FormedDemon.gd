@@ -43,7 +43,14 @@ func form(demon_parts_array: Array):
 			var paper_doll = demon_part.part_stats.paper_doll_scene.instance()
 			parts.add_child(paper_doll)
 			paper_doll.set_position(body)
-
+			
+	var has_legs = false
+	for part in parts.get_children():
+		if part.front_part_type == PaperDoll.FrontType.RIGHT_LEG:
+			has_legs = true
+			break
+	if not has_legs:
+		print("not legs")
 
 func set_home(global_position):
 	original_position = global_position
