@@ -1,12 +1,46 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/paper_doll/PaperDollCreator.gd" type="Script" id=1]
-[ext_resource path="res://scenes/paper_doll/arm/AlienArmPD.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/paper_doll/body/FatBodyPD.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/paper_doll/arm/CrabArmPD.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/paper_doll/arm/BuffArmPD.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/paper_doll/leg/BoneLegPD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/paper_doll/head/BirdHeadPD.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/paper_doll/leg/AverageLegPD.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/paper_doll/head/BullHeadPD.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/paper_doll/leg/BirdLegPD.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/paper_doll/body/FitBodyPD.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/paper_doll/arm/WingPD.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/paper_doll/arm/WireArmPD.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/paper_doll/arm/MantisArmPD.tscn" type="PackedScene" id=12]
 
 [node name="PaperDollCreator" type="Node"]
 script = ExtResource( 1 )
 
-[node name="FatBodyPD" parent="." instance=ExtResource( 3 )]
+[node name="FitBodyPD" parent="." instance=ExtResource( 9 )]
 
-[node name="AlienArmPD" parent="." instance=ExtResource( 2 )]
+[node name="BirdHeadPD" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="AverageLegPD" parent="." instance=ExtResource( 6 )]
+visible = false
+
+[node name="BirdLegPD" parent="." instance=ExtResource( 8 )]
+visible = false
+
+[node name="BoneLegPD" parent="." instance=ExtResource( 4 )]
+
+[node name="BuffArmPD" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="BullHeadPD" parent="." instance=ExtResource( 7 )]
+
+[node name="CrabArmPD" parent="." instance=ExtResource( 2 )]
+visible = false
+
+[node name="MantisArmPD" parent="." instance=ExtResource( 12 )]
+visible = false
+
+[node name="WindPD" parent="." instance=ExtResource( 10 )]
+
+[node name="WireArmPD" parent="." instance=ExtResource( 11 )]
+visible = false

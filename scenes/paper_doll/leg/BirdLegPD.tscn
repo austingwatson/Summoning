@@ -20,3 +20,9 @@ texture = SubResource( 1 )
 
 [node name="FrontPart" parent="." index="1"]
 texture = SubResource( 2 )
+
+[node name="FrontPartPosition" parent="." index="2"]
+position = Vector2( -2, -11 )
+
+[node name="BackPartPosition" parent="." index="3"]
+position = Vector2( -1, -9 )

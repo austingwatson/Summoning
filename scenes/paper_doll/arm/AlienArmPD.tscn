@@ -23,7 +23,7 @@ texture = SubResource( 2 )
 region_rect = Rect2( 208, 0, 16, 48 )
 
 [node name="FrontPartPosition" parent="." index="2"]
-position = Vector2( -1, -18 )
+position = Vector2( -3, -17 )
 
 [node name="BackPartPosition" parent="." index="3"]
-position = Vector2( -1, -18 )
+position = Vector2( 0, -18 )

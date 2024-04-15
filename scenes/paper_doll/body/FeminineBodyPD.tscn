@@ -11,3 +11,18 @@ region = Rect2( 96, 160, 32, 32 )
 
 [node name="FrontPart" parent="." index="0"]
 texture = SubResource( 1 )
+
+[node name="FrontPartPosition" parent="." index="1"]
+position = Vector2( -1, -16 )
+
+[node name="LeftArm" parent="." index="2"]
+position = Vector2( -8, -10 )
+
+[node name="RightArm" parent="." index="3"]
+position = Vector2( 5, -9 )
+
+[node name="LeftLeg" parent="." index="4"]
+position = Vector2( -6, 11 )
+
+[node name="RightLeg" parent="." index="5"]
+position = Vector2( 5, 11 )
