@@ -3,10 +3,10 @@ extends "res://scripts/entity/DemonPart.gd"
 
 signal new_home_set(formed_demon)
 
-export (AtlasTexture) var body1
-export (AtlasTexture) var body2
-export (AtlasTexture) var body3
-export (AtlasTexture) var body4
+export (PackedScene) var body1
+export (PackedScene) var body2
+export (PackedScene) var body3
+export (PackedScene) var body4
 
 var original_position = Vector2.ZERO
 var bodies = []
@@ -27,8 +27,9 @@ func _physics_process(_delta):
 	
 
 func form(demon_parts_array: Array):
-	var body = randi() % bodies.size()
-	sprite.texture = bodies[body]
+	var body = bodies[randi() % bodies.size()].instance()
+	parts.add_child(body)
+	set_deferred("visible", true)
 	for demon_part in demon_parts_array:
 		if demon_part == null:
 			continue
@@ -41,6 +42,7 @@ func form(demon_parts_array: Array):
 		if demon_part.part_type != DemonPart.PartType.BODY:
 			var paper_doll = demon_part.part_stats.paper_doll_scene.instance()
 			parts.add_child(paper_doll)
+			paper_doll.set_position(body)
 
 
 func set_home(global_position):

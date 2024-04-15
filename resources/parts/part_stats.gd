@@ -44,6 +44,11 @@ func generate_random(zero_min, max_stats: int):
 				charm = stat
 			3:
 				speed = stat
+				
+
+func know_all_properties():
+	for key in known_properties.keys():
+		known_properties[key] = true
 
 
 func know_random_property():
@@ -53,7 +58,6 @@ func know_random_property():
 		if not known_properties[key]:
 			known_properties[key] = true
 			break
-	print(known_properties)
 
 
 # needed is how close to perfect the score needs to be

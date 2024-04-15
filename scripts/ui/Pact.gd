@@ -6,9 +6,11 @@ export (AtlasTexture) var new_pact
 export (AtlasTexture) var old_pact
 export (AtlasTexture) var expiring_pact
 
+onready var animated_sprite = $AnimatedSprite
 onready var highlight = $Highlight
 onready var pact = $Pact
 
+var remove = false
 var part_stats = PartStats.new()
 var summoning_circle: SummoningCircle
 var months_left = 3
@@ -19,6 +21,8 @@ var pact_position = 0
 func _ready():
 	part_stats.generate_random(true, 2)
 	pact.texture = new_pact
+	
+	animated_sprite.play("smoke")
 	
 	
 func _input(event):
@@ -47,23 +51,32 @@ func next_month():
 			pact.texture = expiring_pact
 		0:
 			emit_signal("accepted", false, pact_position)
-			self.queue_free()
+			remove = true
+			pact.visible = false
+			highlight.visible = false
+			animated_sprite.frame = 0
+			animated_sprite.play("smoke")
 
 
 func accept():
 	var formed_demon = summoning_circle.current_formed_demon
-	if formed_demon != null:
+	if formed_demon != null and summoning_circle.animated_sprite.animation == "ready":
 		var accepted = part_stats.check_score(formed_demon.part_stats, 0)
 		emit_signal("accepted", accepted, pact_position)
 		formed_demon.queue_free()
 		summoning_circle.current_formed_demon = null
 		summoning_circle.has_formed_demon = false
+		summoning_circle.summon()
 		OpenedPact.finish(accepted)
-		self.queue_free()
+		remove = true
+		pact.visible = false
+		highlight.visible = false
+		animated_sprite.frame = 0
+		animated_sprite.play("smoke")
 
 
 func _on_HighlightArea_mouse_entered():
-	if GlobalValues.tutorial_step < 4:
+	if GlobalValues.tutorial_step < 4 or not pact.visible:
 		return
 	
 	mouse_inside = true
@@ -75,3 +88,10 @@ func _on_HighlightArea_mouse_exited():
 	
 	if not mouse_down:
 		highlight.visible = false
+
+
+func _on_AnimatedSprite_animation_finished():
+	if remove:
+		self.queue_free()
+	else:
+		pact.visible = true

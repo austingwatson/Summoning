@@ -9,7 +9,7 @@ var demon_part = null
 
 func _physics_process(_delta):
 	if is_instance_valid(demon_part) and demon_part != null and not demon_part.mouse_down:
-		demon_part.part_stats.know_random_property()
+		demon_part.part_stats.know_all_properties()
 		demon_part.queue_free()
 		demon_part = null
 

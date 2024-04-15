@@ -7,5 +7,5 @@ onready var left_leg = $LeftLeg
 onready var right_leg = $RightLeg
 
 
-func set_position(body):
+func set_position(_body):
 	pass

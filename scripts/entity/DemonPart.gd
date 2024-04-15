@@ -146,11 +146,3 @@ func get_class():
 
 func _on_Flame_animation_finished():
 	flame.play("holding")
-
-
-func _on_OrganBeatTimer_timeout():
-	if part_type != PartType.BODY:
-		sprite.position.y = 0
-		$OrganBeatTimer.stop()
-	
-	sprite.position.y *= -1

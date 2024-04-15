@@ -49,6 +49,7 @@ func spawn_pacts(game_screen, amount: int):
 		var pact = pact_scene.instance()
 		pact.position = Vector2(i * (pact.get_width() + 5) + offset, 10)
 		game_screen.add_pact(pact)
+		yield(game_screen.get_tree().create_timer(1), "timeout")
 
 
 func spawn_demon_parts(game_screen, amount: int):
