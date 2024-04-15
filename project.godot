@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/entity/Hook.gd"
 }, {
+"base": "Node2D",
+"class": "PaperDoll",
+"language": "GDScript",
+"path": "res://scripts/paper_doll/PaperDoll.gd"
+}, {
 "base": "Resource",
 "class": "PartStats",
 "language": "GDScript",
@@ -61,6 +66,7 @@ _global_script_class_icons={
 "FormedDemon": "",
 "FormedDemonHolder": "",
 "Hook": "",
+"PaperDoll": "",
 "PartStats": "",
 "PlayerDemon": "",
 "SummoningCircle": ""

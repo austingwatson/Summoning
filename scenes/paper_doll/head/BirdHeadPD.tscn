@@ -8,7 +8,11 @@ atlas = ExtResource( 2 )
 region = Rect2( 288, 112, 32, 32 )
 
 [node name="BirdHeadPD" instance=ExtResource( 1 )]
+front_part_type = 1
 
-[node name="FrontPart" parent="." index="1"]
+[node name="FrontPart" parent="." index="0"]
 texture = SubResource( 1 )
-offset = Vector2( 0, -32 )
+offset = Vector2( 0, -11 )
+
+[node name="FrontPartPosition" parent="." index="1"]
+position = Vector2( 0, -11 )

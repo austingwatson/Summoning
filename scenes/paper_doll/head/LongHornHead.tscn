@@ -8,6 +8,7 @@ atlas = ExtResource( 2 )
 region = Rect2( 0, 112, 32, 32 )
 
 [node name="LongHornHead" instance=ExtResource( 1 )]
+front_part_type = 1
 
-[node name="FrontPart" parent="." index="1"]
+[node name="FrontPart" parent="." index="0"]
 texture = SubResource( 1 )

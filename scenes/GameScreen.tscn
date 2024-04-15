@@ -73,7 +73,7 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="DemonAltar" parent="." instance=ExtResource( 1 )]
-position = Vector2( 286, 120 )
+position = Vector2( 288, 140 )
 
 [node name="PlayerDemon" parent="." instance=ExtResource( 7 )]
 position = Vector2( 429, 80 )

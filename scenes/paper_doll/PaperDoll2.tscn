@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/paper_doll/PaperDoll.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/paper_doll/PaperDoll2.gd" type="Script" id=2]
 
 [node name="PaperDoll2" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+back_part_type = 0
 
 [node name="BackPart" type="Sprite" parent="." index="0"]
 z_index = -1
+
+[node name="BackPartPosition" type="Position2D" parent="." index="3"]

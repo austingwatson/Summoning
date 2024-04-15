@@ -12,9 +12,11 @@ atlas = ExtResource( 2 )
 region = Rect2( 208, 48, 16, 48 )
 
 [node name="FootlessLegPD" instance=ExtResource( 1 )]
+front_part_type = 3
+back_part_type = 2
 
 [node name="BackPart" parent="." index="0"]
 texture = SubResource( 1 )
 
-[node name="FrontPart" parent="." index="2"]
+[node name="FrontPart" parent="." index="1"]
 texture = SubResource( 2 )

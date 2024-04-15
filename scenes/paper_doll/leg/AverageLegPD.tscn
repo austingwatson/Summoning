@@ -12,9 +12,11 @@ atlas = ExtResource( 2 )
 region = Rect2( 112, 64, 16, 32 )
 
 [node name="AverageLegPD" instance=ExtResource( 1 )]
+front_part_type = 2
+back_part_type = 2
 
 [node name="BackPart" parent="." index="0"]
 texture = SubResource( 1 )
 
-[node name="FrontPart" parent="." index="2"]
+[node name="FrontPart" parent="." index="1"]
 texture = SubResource( 2 )

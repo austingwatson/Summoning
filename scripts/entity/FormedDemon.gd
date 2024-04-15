@@ -40,7 +40,6 @@ func form(demon_parts_array: Array):
 		
 		if demon_part.part_type != DemonPart.PartType.BODY:
 			var paper_doll = demon_part.part_stats.paper_doll_scene.instance()
-			paper_doll.adjust(body)
 			parts.add_child(paper_doll)
 
 
