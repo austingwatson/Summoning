@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/gooey-squish-14820.mp3-aab3d3d57bec258948cc5f2882914a19.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/gooey-squish-14820.mp3"
+dest_files=[ "res://.import/gooey-squish-14820.mp3-aab3d3d57bec258948cc5f2882914a19.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

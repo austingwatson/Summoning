@@ -25,4 +25,4 @@ position = Vector2( 11, -10 )
 position = Vector2( -6, 12 )
 
 [node name="RightLeg" parent="." index="5"]
-position = Vector2( 9, 12 )
+position = Vector2( 8, 12 )
