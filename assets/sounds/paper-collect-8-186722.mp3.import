@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/paper-collect-8-186722.mp3-eb070c0878886d30d6e229a7df1882cc.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/paper-collect-8-186722.mp3"
+dest_files=[ "res://.import/paper-collect-8-186722.mp3-eb070c0878886d30d6e229a7df1882cc.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

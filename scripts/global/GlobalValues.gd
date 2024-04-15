@@ -19,6 +19,8 @@ const demon_part_scene = preload("res://scenes/entity/DemonPart.tscn")
 var game_screen = null
 var hook_formed_demon = null
 var tutorial_step = TutorialStep.MOVE_PART_1
+
+var current_souls = [0, 0, 0, 0]
 	
 
 func skip_tutorial():
@@ -27,7 +29,7 @@ func skip_tutorial():
 	
 	tutorial_step = TutorialStep.NEXT_MONTH
 	game_screen._on_NextMonthButton_pressed()
-	print(tutorial_step)
+	#print(tutorial_step)
 
 
 func next_tutorial_step():
@@ -49,3 +51,8 @@ func next_tutorial_step():
 		game_screen.add_demon_part(body_part)
 	elif tutorial_step == TutorialStep.FINISHED and hook_formed_demon != null:
 		hook_formed_demon.queue_free()
+
+
+func add_soul(soul_amount):
+	for i in range(soul_amount.size()):
+		current_souls[i] += soul_amount[i]

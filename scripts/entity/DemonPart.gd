@@ -112,7 +112,8 @@ func push():
 	
 
 func fling(direction):
-	apply_central_impulse(direction)
+	enable()
+	call_deferred("apply_central_impulse", direction)
 
 
 func _on_DemonPart_mouse_entered():

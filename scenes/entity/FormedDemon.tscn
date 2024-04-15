@@ -26,11 +26,11 @@ body2 = ExtResource( 6 )
 body3 = ExtResource( 7 )
 body4 = ExtResource( 8 )
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="0"]
 position = Vector2( 0, -1 )
 shape = SubResource( 6 )
 
-[node name="Sprite" parent="." index="3"]
+[node name="Sprite" parent="." index="2"]
 z_index = 3
 
 [node name="Parts" type="Node2D" parent="." index="4"]

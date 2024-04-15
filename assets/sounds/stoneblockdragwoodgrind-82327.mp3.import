@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/stoneblockdragwoodgrind-82327.mp3-4ab60c4748113ebe3ad2978be2336224.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/stoneblockdragwoodgrind-82327.mp3"
+dest_files=[ "res://.import/stoneblockdragwoodgrind-82327.mp3-4ab60c4748113ebe3ad2978be2336224.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

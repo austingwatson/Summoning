@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/game-eat-sound-83240.mp3-12f5639117ad884472b1f7c36145b662.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/game-eat-sound-83240.mp3"
+dest_files=[ "res://.import/game-eat-sound-83240.mp3-12f5639117ad884472b1f7c36145b662.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -125,7 +125,7 @@ wait_time = 5.0
 one_shot = true
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
-visible = false
 
+[connection signal="eat_part" from="PlayerDemon" to="." method="_on_PlayerDemon_eat_part"]
 [connection signal="pressed" from="Month/NextMonthButton" to="." method="_on_NextMonthButton_pressed"]
 [connection signal="timeout" from="Month/DisableMonthTimer" to="." method="_on_DisableMonthTimer_timeout"]

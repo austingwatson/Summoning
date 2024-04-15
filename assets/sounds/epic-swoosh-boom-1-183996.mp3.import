@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/epic-swoosh-boom-1-183996.mp3-679e4be649f6707ef63b01a24cce14f7.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/epic-swoosh-boom-1-183996.mp3"
+dest_files=[ "res://.import/epic-swoosh-boom-1-183996.mp3-679e4be649f6707ef63b01a24cce14f7.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

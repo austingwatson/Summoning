@@ -16,7 +16,12 @@ func _physics_process(_delta):
 	for candle in candles.get_children():
 		ready = ready and candle.flame.visible
 	if ready and (animated_sprite.animation == "idle" or animated_sprite.animation == "mouse_over"):
-		animated_sprite.play("ready")
+		if current_formed_demon != null:
+			animated_sprite.play("demon_on")
+		else:
+			animated_sprite.play("ready")
+	elif not ready and animated_sprite.animation != "mouse_over" and animated_sprite.animation != "summon":
+		animated_sprite.play("idle")
 
 
 func summon():
@@ -30,6 +35,9 @@ func _on_SummoningCircle_body_entered(body):
 	if not has_formed_demon and body is FormedDemon:
 		set_formed_dummy(body, self.global_position)
 		current_formed_demon = body
+		
+		if animated_sprite.animation == "ready":
+			animated_sprite.play("demon_on")
 
 
 func _on_SummoningCircle_mouse_entered():
