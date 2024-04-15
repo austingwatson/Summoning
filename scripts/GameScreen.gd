@@ -98,9 +98,14 @@ func _on_pact_accepted(accepted, pact_position, soul_amount):
 	pact_locations_occupied[pact_position] = false
 	if accepted:
 		pacts_success += 1
-		hud.add_soul(soul_amount)
+		GlobalValues.add_soul(soul_amount)
+		hud.update_soul()
 	else:
 		pacts_fail += 1
+
+
+func update_hud():
+	hud.update_soul()
 
 
 func _on_NextMonthButton_pressed():

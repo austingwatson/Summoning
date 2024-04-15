@@ -20,6 +20,8 @@ func _physics_process(_delta):
 			animated_sprite.play("demon_on")
 		else:
 			animated_sprite.play("ready")
+	elif not ready and animated_sprite.animation != "mouse_over" and animated_sprite.animation != "summon":
+		animated_sprite.play("idle")
 
 
 func summon():

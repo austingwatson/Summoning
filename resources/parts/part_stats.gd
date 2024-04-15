@@ -39,6 +39,8 @@ func generate_random(zero_min, max_stats: int):
 			continue
 		elif amount == 2 and stat > 0:
 			break
+		elif abs(stat) > max_stats:
+			break
 		max_stats -= abs(stat)
 		amount += 1
 		match i:

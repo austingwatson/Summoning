@@ -43,6 +43,11 @@ func _ready():
 func add_soul_amount(amount):
 	soul_amount += amount
 	current.text = str(soul_amount)
+	
+
+func set_soul_amount(amount):
+	soul_amount = amount
+	current.text = str(soul_amount)
 
 
 func set_frame(frame):

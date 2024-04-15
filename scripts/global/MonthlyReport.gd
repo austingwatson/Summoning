@@ -30,13 +30,16 @@ func open(pacts_completed, pacts_failed, parts_eaten, souls_gained):
 	parts_eaten_value.text = str(parts_eaten)
 	background.visible = true
 	
-	for i in range(souls_gained.size()):
+	for i in range(GlobalValues.current_souls.size()):
 		var soul = souls.get_child(i)
-		soul.add_soul_amount(souls_gained[i])
+		soul.set_soul_amount(GlobalValues.current_souls[i])
 	
 
 func close():
-	for soul in souls.get_children():
+	var amount_used = [0, 0, 0, 0]
+	for i in souls.get_child_count():
+		var soul = souls.get_child(i)
+		amount_used[i] -= soul.removing_amount
 		soul.accept()
 	
 	if current_souls_amount < needed_souls:
@@ -45,7 +48,10 @@ func close():
 	current_souls_amount = 0
 	total_souls.text = str(current_souls_amount) + "/" + str(needed_souls)
 	
+	GlobalValues.add_soul(amount_used)
+	
 	background.visible = false
+	game_screen.update_hud()
 	game_screen.start_month()
 
 

@@ -26,7 +26,7 @@ var task_2_words = ["a little", "somewhat", "moderately", "very", "extremely", "
 var lines = []
 var stats = [0, 1, 2, 3]
 
-var soul_worth = 1
+var soul_worth = [1, 2, 0, 0]
 
 
 func _ready():
@@ -132,7 +132,7 @@ func next_month():
 		1:
 			pact.texture = expiring_pact
 		0:
-			emit_signal("accepted", false, pact_position, 0)
+			emit_signal("accepted", false, pact_position, [])
 			remove = true
 			pact.visible = false
 			highlight.visible = false
