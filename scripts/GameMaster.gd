@@ -32,8 +32,8 @@ func next_month(game_screen, current_pacts, current_demon_parts):
 		game_screen.add_demon_part(body_part)
 	elif month == 1:
 		GlobalValues.next_tutorial_step()
-		spawn_pacts(game_screen, min(1, MAX_PACTS - current_pacts))
-		spawn_demon_parts(game_screen, min(4, MAX_DEMON_PARTS - current_demon_parts))
+		spawn_pacts(game_screen, 2)
+		spawn_demon_parts(game_screen, 12)
 	else:
 		spawn_pacts(game_screen, min(3, MAX_PACTS - current_pacts))
 		spawn_demon_parts(game_screen, min(8, MAX_DEMON_PARTS - current_demon_parts))

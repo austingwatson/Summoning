@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/fire-torch-whoosh-4-190300.mp3-8bde7272591369522a89f2b87d59d940.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/fire-torch-whoosh-4-190300.mp3"
+dest_files=[ "res://.import/fire-torch-whoosh-4-190300.mp3-8bde7272591369522a89f2b87d59d940.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

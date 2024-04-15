@@ -11,5 +11,5 @@ dest_files=[ "res://.import/gooey-squish-14820.mp3-aab3d3d57bec258948cc5f2882914
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

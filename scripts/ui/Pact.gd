@@ -26,16 +26,20 @@ var task_2_words = ["a little", "somewhat", "moderately", "very", "extremely", "
 var lines = []
 var stats = [0, 1, 2, 3]
 
-var soul_worth = [1, 2, 0, 0]
+var soul_worth = [0, 0, 0, 0]
 
 
 func _ready():
-	part_stats.generate_random(false, 1)
+	part_stats.generate_random(false, GlobalValues.pact_dif)
 	pact.texture = new_pact
 	
 	animated_sprite.play("smoke")
 	
 	set_words()
+	
+	for _i in range(3):
+		var rng = randi() % 4
+		soul_worth[rng] += 1
 	
 	
 func _input(event):

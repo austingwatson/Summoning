@@ -11,5 +11,5 @@ dest_files=[ "res://.import/fire-torch-whoosh-2-186586.mp3-c41150d1513224b1b4c0f
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

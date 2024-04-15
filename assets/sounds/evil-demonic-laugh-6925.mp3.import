@@ -11,5 +11,5 @@ dest_files=[ "res://.import/evil-demonic-laugh-6925.mp3-eb071b1663aba5481a4e4977
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

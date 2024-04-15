@@ -11,5 +11,5 @@ dest_files=[ "res://.import/eating-sound-effect-36186.mp3-cdb2e44b905dace7ecb3e4
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

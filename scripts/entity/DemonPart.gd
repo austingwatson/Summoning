@@ -58,6 +58,8 @@ func _unhandled_input(event):
 			set_deferred("global_position", alter_location)
 		else:
 			apply_central_impulse(Vector2(0, LIFT_CONSTANT))
+		if part_type != PartType.FORMED:
+			SoundPlayer.play_drop_part_sound()
 
 
 func _physics_process(delta):

@@ -46,6 +46,7 @@ func open(pact):
 	for line in self.pact.lines:
 		label.text += line
 		label.text += "\n"
+	SoundPlayer.play_open_pact_sound()
 	
 
 func close():

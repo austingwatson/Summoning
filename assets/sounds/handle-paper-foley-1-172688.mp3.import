@@ -11,5 +11,5 @@ dest_files=[ "res://.import/handle-paper-foley-1-172688.mp3-197d88d4d0dbc524f37c
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

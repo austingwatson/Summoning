@@ -11,5 +11,5 @@ dest_files=[ "res://.import/stoneblockdragwoodgrind-82327.mp3-4ab60c4748113ebe3a
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

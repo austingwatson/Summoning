@@ -11,5 +11,5 @@ dest_files=[ "res://.import/paper-collect-8-186722.mp3-eb070c0878886d30d6e229a7d
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

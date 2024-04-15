@@ -25,12 +25,15 @@ var parts_eaten = 0
 
 
 func _ready():
+	SoundPlayer.stop_music()
+	
 	GlobalValues.game_screen = self
 	MonthlyReport.game_screen = self
 	game_master.next_month(self, pacts.get_child_count(), demon_parts.get_child_count())
 	
 	# for debugging only, comment out for full game
 	call_deferred("skip_tutorial")
+	GlobalValues.reset()
 	
 
 func skip_tutorial():
@@ -89,9 +92,15 @@ func start_month():
 	game_master.next_month(self, pacts.get_child_count(), demon_parts.get_child_count())
 	disable_month_timer.start()
 	
+	GlobalValues.total_pacts_completed += pacts_success
+	GlobalValues.total_pacts_failed += pacts_fail
+	GlobalValues.total_parts_eaten += parts_eaten
+	
 	pacts_success = 0
 	pacts_fail = 0
 	parts_eaten = 0
+	if game_master.month % 2 == 0:
+		GlobalValues.pact_dif += 1
 	
 
 func _on_pact_accepted(accepted, pact_position, soul_amount):
@@ -102,6 +111,7 @@ func _on_pact_accepted(accepted, pact_position, soul_amount):
 		hud.update_soul()
 	else:
 		pacts_fail += 1
+		GlobalValues.needed_souls += 1
 
 
 func update_hud():

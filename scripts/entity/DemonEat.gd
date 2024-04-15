@@ -14,6 +14,7 @@ func _physics_process(_delta):
 		demon_part.queue_free()
 		demon_part = null
 		emit_signal("eat_part")
+		SoundPlayer.play_eating_sound()
 
 
 func _on_DemonEat_body_entered(body):

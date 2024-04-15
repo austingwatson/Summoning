@@ -11,5 +11,5 @@ dest_files=[ "res://.import/fireball-whoosh-4-179128.mp3-65c0f12cf015e682f91df1b
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
