@@ -11,15 +11,15 @@ region = Rect2( 400, 0, 16, 48 )
 [resource]
 script = ExtResource( 1 )
 type = "Arm"
-lethality = 6
-endurance = 6
-charm = 6
-speed = 0
+lethality = 0
+endurance = 0
+charm = 3
+speed = 1
 texture = SubResource( 1 )
 paper_doll_scene = ExtResource( 3 )
 known_properties = {
-"charm": true,
-"endurance": true,
-"lethality": true,
+"charm": false,
+"endurance": false,
+"lethality": false,
 "speed": false
 }

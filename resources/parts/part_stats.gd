@@ -54,6 +54,7 @@ func generate_random(zero_min, max_stats: int):
 				speed = stat
 		if stat < 0:
 			break
+			
 				
 func get_stats(array: Array):
 	var result = []
@@ -91,42 +92,49 @@ func know_random_property():
 # going up is less than perfect
 # 24 is the least perfect
 func check_score(part_stats, needed) -> bool:
-	var lethality_score = part_stats.lethality - self.lethality
-	var endurance_score = part_stats.endurance - self.endurance
-	var charm_score = part_stats.charm - self.charm
-	var speed_score = part_stats.speed - self.speed
+	var lethality_score = 0
+	var endurance_score = 0
+	var charm_score = 0
+	var speed_score = 0
 	
-	if part_stats.lethality >= self.lethality:
-		lethality_score = 0
-	if part_stats.endurance >= self.endurance:
-		endurance_score = 0
-	if part_stats.charm >= self.charm:
-		charm_score = 0
-	if part_stats.speed >= self.speed:
-		speed_score = 0
+	if self.lethality > 0:
+		lethality_score = max(0, self.lethality - part_stats.lethality)
+	elif self.lethality < 0:
+		lethality_score = part_stats.lethality - abs(self.lethality)
+		if lethality_score >= 3:
+			lethality_score = 1000
+		else:
+			lethality_score = 0
+	if self.endurance > 0:
+		endurance_score = max(0, self.endurance - part_stats.endurance)
+	elif self.endurance < 0:
+		endurance_score = part_stats.endurance - abs(self.endurance)
+		if endurance_score >= 3:
+			endurance_score = 1000
+		else:
+			endurance_score = 0
+	if self.charm > 0:
+		charm_score = max(0, self.charm - part_stats.charm)
+	elif self.charm < 0:
+		charm_score = part_stats.charm - abs(self.charm)
+		if charm_score >= 3:
+			charm_score = 1000
+		else:
+			charm_score = 0
+	if self.speed > 0:
+		speed_score = max(0, self.speed - part_stats.speed)
+	elif self.speed < 0:
+		speed_score = part_stats.speed - abs(self.speed)
+		if speed_score >= 3:
+			speed_score = 1000
+		else:
+			speed_score = 0
 	
-	if self.lethality < 0:
-		lethality_score = 0			
-	if self.endurance < 0:
-		endurance_score = 0
-	if self.charm < 0:
-		charm_score = 0
-	if self.speed < 0:
-		speed_score = 0
-	
-	var total = abs(lethality_score + endurance_score + charm_score + speed_score)
-	
-	if self.lethality < 0 and part_stats.lethality - abs(self.lethality) >= 3:
-		total += 10000
-	if self.endurance < 0 and part_stats.endurance - abs(self.endurance) >= 3:
-		total += 10000
-	if self.charm < 0 and part_stats.charm - abs(self.charm) >= 3:
-		total += 10000
-	if self.speed < 0 and part_stats.speed - abs(self.speed) >= 3:
-		total += 10000
+	var total = lethality_score + endurance_score + charm_score + speed_score
 	
 	#self.print_stats()
 	#part_stats.print_stats()
+	#print([lethality_score, endurance_score, charm_score, speed_score])
 	#print(total)
 	#print(needed)
 	

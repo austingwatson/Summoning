@@ -11,8 +11,8 @@ region = Rect2( 496, 48, 16, 48 )
 [resource]
 script = ExtResource( 1 )
 type = "Leg"
-lethality = 0
-endurance = 0
+lethality = 1
+endurance = 3
 charm = 0
 speed = 0
 texture = SubResource( 1 )
