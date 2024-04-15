@@ -11,5 +11,5 @@ dest_files=[ "res://.import/epic-swoosh-boom-1-183996.mp3-679e4be649f6707ef63b01
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

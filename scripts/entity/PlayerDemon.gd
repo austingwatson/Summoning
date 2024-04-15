@@ -23,6 +23,7 @@ func _unhandled_input(event):
 
 func flame_on():
 	hand.play("start_fire")
+	SoundPlayer.play_ignite_hand_sound()
 	
 
 func flame_off():

@@ -84,6 +84,7 @@ OpenedPact="*res://scenes/ui/OpenedPact.tscn"
 DemonPartList="*res://scenes/global/DemonPartList.tscn"
 GlobalValues="*res://scenes/global/GlobalValues.tscn"
 MonthlyReport="*res://scenes/global/MonthlyReport.tscn"
+SoundPlayer="*res://scenes/global/SoundPlayer.tscn"
 
 [debug]
 

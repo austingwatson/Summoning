@@ -11,5 +11,5 @@ dest_files=[ "res://.import/game-eat-sound-83240.mp3-12f5639117ad884472b1f7c3614
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

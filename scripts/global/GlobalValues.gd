@@ -21,6 +21,12 @@ var hook_formed_demon = null
 var tutorial_step = TutorialStep.MOVE_PART_1
 
 var current_souls = [0, 0, 0, 0]
+var needed_souls = 2
+var pact_dif = 1
+
+var total_pacts_completed = 0
+var total_pacts_failed = 0
+var total_parts_eaten = 0
 	
 
 func skip_tutorial():
@@ -51,6 +57,17 @@ func next_tutorial_step():
 		game_screen.add_demon_part(body_part)
 	elif tutorial_step == TutorialStep.FINISHED and hook_formed_demon != null:
 		hook_formed_demon.queue_free()
+
+
+func reset():
+	for i in range(current_souls.size()):
+		current_souls[i] = 0
+	needed_souls = 2
+	pact_dif = 1
+	
+	total_pacts_completed = 0
+	total_pacts_failed = 0
+	total_parts_eaten = 0
 
 
 func add_soul(soul_amount):

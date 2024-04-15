@@ -19,11 +19,11 @@ region = Rect2( 656, 304, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 4 )
-region = Rect2( 408, 272, 8, 8 )
+region = Rect2( 408, 288, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 4 )
-region = Rect2( 408, 280, 8, 8 )
+region = Rect2( 416, 272, 8, 8 )
 
 [sub_resource type="Animation" id=9]
 resource_name = "hover"

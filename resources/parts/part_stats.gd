@@ -132,11 +132,11 @@ func check_score(part_stats, needed) -> bool:
 	
 	var total = lethality_score + endurance_score + charm_score + speed_score
 	
-	#self.print_stats()
-	#part_stats.print_stats()
-	#print([lethality_score, endurance_score, charm_score, speed_score])
-	#print(total)
-	#print(needed)
+	self.print_stats()
+	part_stats.print_stats()
+	print([lethality_score, endurance_score, charm_score, speed_score])
+	print(total)
+	print(needed)
 	
 	return total <= needed
 	

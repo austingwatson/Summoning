@@ -51,6 +51,7 @@ func form(demon_parts_array: Array):
 			break
 	if not has_legs:
 		print("not legs")
+	SoundPlayer.play_demon_sound()
 
 func set_home(global_position):
 	original_position = global_position

@@ -207,7 +207,6 @@ visible = false
 position = Vector2( 80, 53 )
 frames = SubResource( 22 )
 animation = "hovered"
-frame = 1
 playing = true
 
 [node name="AcceptPact" type="Area2D" parent="."]

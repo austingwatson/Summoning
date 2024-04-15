@@ -14,6 +14,9 @@ func _physics_process(_delta):
 			animation_player.play("RESET")
 	else:
 		foreground_hook.visible = false
+		
+		if has_formed_demon:
+			SoundPlayer.play_hook_sound()
 
 
 func _on_Hook_body_entered(body):

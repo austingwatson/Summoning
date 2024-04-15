@@ -26,6 +26,7 @@ func _physics_process(_delta):
 
 func summon():
 	animated_sprite.play("summon")
+	SoundPlayer.play_summon_sound()
 
 
 func _on_SummoningCircle_body_entered(body):

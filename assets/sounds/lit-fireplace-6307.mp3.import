@@ -11,5 +11,5 @@ dest_files=[ "res://.import/lit-fireplace-6307.mp3-ac05102ccd25595eda4891105550e
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

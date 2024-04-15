@@ -11,5 +11,5 @@ dest_files=[ "res://.import/knifescrape01-102818.mp3-469e325337ae3d9525d98cda4e7
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

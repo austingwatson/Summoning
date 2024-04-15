@@ -11,5 +11,5 @@ dest_files=[ "res://.import/analog-appliance-button-2-185277.mp3-d1a3cd397d248d4
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
