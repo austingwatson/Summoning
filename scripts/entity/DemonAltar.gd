@@ -48,11 +48,13 @@ func empty_parts():
 		position.visible = true
 	
 
-func get_closest_open_part_position(demon_part) -> Vector2:
+func get_closest_open_part_position(demon_part) -> Array:
 	var closest: Position2D
 	var closest_distance = 1.79769e308
+	var index = 0
 	
-	for position in part_positions.get_children():
+	for i in range(part_positions.get_child_count()):
+		var position = part_positions.get_child(i)
 		if not position.visible:
 			continue
 		
@@ -60,20 +62,24 @@ func get_closest_open_part_position(demon_part) -> Vector2:
 		if distance < closest_distance:
 			closest = position
 			closest_distance = distance
+			index = i
 	
 	closest.visible = false
-	return closest.global_position
+	return [closest.global_position, index]
 
 
 func _on_DemonAltar_body_entered(body):
 	if GlobalValues.tutorial_step <= GlobalValues.TutorialStep.MOVE_PART_2:
 		GlobalValues.next_tutorial_step()
 	
-	if not has_formed_demon and body is DemonPart and body.mouse_down:
+	if not has_formed_demon and body is DemonPart:
 		if body.part_type != DemonPart.PartType.FORMED and parts[body.part_type] == null:
 			parts[body.part_type] = body
 			body.disable()
-			body.global_position = get_closest_open_part_position(body)
+			var array = get_closest_open_part_position(body)
+			body.global_position = array[0]
+			body.part_position_index = array[1]
+			body.alter_location = array[0]
 
 
 func _on_Accept_pressed():
@@ -109,3 +115,12 @@ func _on_Clear_pressed():
 		GlobalValues.next_tutorial_step()
 	
 	empty_parts()
+
+
+func _on_DemonAltar_body_exited(body):
+	if body is DemonPart:
+		var index = body.part_position_index
+		if index >= 0:
+			parts[body.part_type] = null
+			part_positions.get_child(index).visible = true
+			body.part_position_index = -1

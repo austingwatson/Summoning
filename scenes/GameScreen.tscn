@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/entity/DemonAltar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/textures/workshop.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/entity/SummoningCircle.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/entity/Hook.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/entity/PlayerDemon.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/entity/Candle.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 155 )
@@ -75,7 +76,7 @@ centered = false
 position = Vector2( 286, 120 )
 
 [node name="PlayerDemon" parent="." instance=ExtResource( 7 )]
-position = Vector2( 432, 104 )
+position = Vector2( 429, 80 )
 
 [node name="DemonParts" type="Node2D" parent="."]
 
@@ -123,6 +124,9 @@ text = "Next Month"
 [node name="DisableMonthTimer" type="Timer" parent="Month"]
 wait_time = 5.0
 one_shot = true
+
+[node name="Candle" parent="." instance=ExtResource( 8 )]
+position = Vector2( 124, 114 )
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 visible = false

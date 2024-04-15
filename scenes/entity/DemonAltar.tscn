@@ -5,7 +5,7 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 resource_local_to_scene = true
-extents = Vector2( 46.5, 10 )
+extents = Vector2( 80, 25 )
 
 [node name="DemonAltar" instance=ExtResource( 1 )]
 collision_layer = 8
@@ -45,5 +45,6 @@ position = Vector2( 16, 0 )
 position = Vector2( 36, 0 )
 
 [connection signal="body_entered" from="." to="." method="_on_DemonAltar_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_DemonAltar_body_exited"]
 [connection signal="pressed" from="Accept" to="." method="_on_Accept_pressed"]
 [connection signal="pressed" from="Clear" to="." method="_on_Clear_pressed"]

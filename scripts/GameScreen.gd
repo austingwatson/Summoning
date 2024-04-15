@@ -6,6 +6,7 @@ var pact_locations_occupied = [false, false, false, false, false, false]
 
 onready var summoning_circle = $SummoningCircle
 onready var pacts = $Pacts
+onready var player_demon = $PlayerDemon
 onready var demon_parts = $DemonParts
 onready var next_month_button = $Month/NextMonthButton
 onready var disable_month_timer = $Month/DisableMonthTimer
@@ -65,6 +66,16 @@ func get_demon_part_spawn_point() -> Vector2:
 
 func add_demon_part(demon_part):
 	demon_parts.add_child(demon_part)
+	demon_part.connect("flame_on", self, "flame_on")
+	demon_part.connect("flame_off", self, "flame_off")
+	
+
+func flame_on():
+	player_demon.flame_on()
+	
+
+func flame_off():
+	player_demon.flame_off()
 	
 
 func _on_pact_accepted(accepted, pact_position):	

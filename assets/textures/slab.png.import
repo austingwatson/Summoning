@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pitmaster_player_animation.png-868365df3654536657c9cff635f89778.stex"
+path="res://.import/slab.png-1e0d58f7a60395dc3a91354cb9e956f7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/pitmaster_player_animation.png"
-dest_files=[ "res://.import/pitmaster_player_animation.png-868365df3654536657c9cff635f89778.stex" ]
+source_file="res://assets/textures/slab.png"
+dest_files=[ "res://.import/slab.png-1e0d58f7a60395dc3a91354cb9e956f7.stex" ]
 
 [params]
 

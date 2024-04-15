@@ -1,6 +1,9 @@
 class_name DemonPart
 extends RigidBody2D
 
+signal flame_on
+signal flame_off
+
 enum PartType {
 	HEAD,
 	BODY,
@@ -20,6 +23,8 @@ var mouse_down = false
 
 var other_demon_parts = []
 var being_pushed = false
+var part_position_index = -1
+var alter_location = Vector2.ZERO
 
 onready var collision_shape = $CollisionShape2D
 onready var flame = $Flame
@@ -40,11 +45,19 @@ func _unhandled_input(event):
 		flame.visible = true
 		flame.frame = 0
 		flame.play("spark")
+		emit_signal("flame_on")
+		enable()
 		apply_central_impulse(Vector2(0, -LIFT_CONSTANT))
 	elif mouse_down and event.is_action_released("grab"):
 		mouse_down = false
 		flame.visible = false
-		apply_central_impulse(Vector2(0, LIFT_CONSTANT))
+		emit_signal("flame_off")
+		
+		if part_position_index >= 0:
+			disable()
+			set_deferred("global_position", alter_location)
+		else:
+			apply_central_impulse(Vector2(0, LIFT_CONSTANT))
 
 
 func _physics_process(delta):
@@ -62,15 +75,17 @@ func _physics_process(delta):
 	
 
 func enable():
-	collision_shape.set_deferred("disabled", false)
+	#collision_shape.set_deferred("disabled", false)
 	set_deferred("mode", RigidBody2D.MODE_RIGID)
 	
 
 func disable():
-	collision_shape.set_deferred("disabled", true)
+	#collision_shape.set_deferred("disabled", true)
 	set_deferred("mode", RigidBody2D.MODE_KINEMATIC)
 	mouse_down = false
 	flame.visible = false
+	emit_signal("flame_off")
+	#call_deferred("enable")
 	
 
 func push():
@@ -131,3 +146,11 @@ func get_class():
 
 func _on_Flame_animation_finished():
 	flame.play("holding")
+
+
+func _on_OrganBeatTimer_timeout():
+	if part_type != PartType.BODY:
+		sprite.position.y = 0
+		$OrganBeatTimer.stop()
+	
+	sprite.position.y *= -1

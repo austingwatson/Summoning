@@ -1,0 +1,78 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://assets/textures/effects_sheet.png" type="Texture" id=1]
+[ext_resource path="res://scripts/entity/Candle.gd" type="Script" id=2]
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 48, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 80, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 16, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 64, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 1 )
+region = Rect2( 16, 64, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 64, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 64, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=12]
+animations = [ {
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"loop": true,
+"name": "flame_1",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"loop": true,
+"name": "flame_2",
+"speed": 10.0
+} ]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[node name="Candle" type="Area2D"]
+script = ExtResource( 2 )
+candle_stick_1 = SubResource( 2 )
+candle_stick_2 = SubResource( 3 )
+
+[node name="CandleStick" type="Sprite" parent="."]
+position = Vector2( 0, 8 )
+
+[node name="Flame" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -8 )
+frames = SubResource( 12 )
+animation = "flame_1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[connection signal="mouse_entered" from="." to="." method="_on_Candle_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Candle_mouse_exited"]
