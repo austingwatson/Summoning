@@ -7,6 +7,8 @@ export (Resource) var crab_arm
 export (Resource) var mantis_arm
 export (Resource) var wing
 export (Resource) var wire_arm
+export (Resource) var big_foot_arm
+export (Resource) var snake_arm
 
 # bodies
 export (Resource) var big_heart
@@ -34,6 +36,8 @@ export (Resource) var bone_leg
 export (Resource) var bull_leg
 export (Resource) var footless_leg
 export (Resource) var thick_leg
+export (Resource) var backward_knee_leg
+export (Resource) var goat_leg
 
 var arms = []
 var bodies = []
@@ -48,6 +52,8 @@ func _ready():
 	arms.append(mantis_arm)
 	arms.append(wing)
 	arms.append(wire_arm)
+	arms.append(big_foot_arm)
+	arms.append(snake_arm)
 	
 	bodies.append(big_heart)
 	bodies.append(dead_heart)
@@ -72,6 +78,8 @@ func _ready():
 	legs.append(bull_leg)
 	legs.append(footless_leg)
 	legs.append(thick_leg)
+	legs.append(backward_knee_leg)
+	legs.append(goat_leg)
 
 
 func get_random_arm():
