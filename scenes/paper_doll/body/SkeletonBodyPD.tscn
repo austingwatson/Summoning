@@ -13,7 +13,7 @@ region = Rect2( 0, 160, 32, 32 )
 texture = SubResource( 1 )
 
 [node name="FrontPartPosition" parent="." index="1"]
-position = Vector2( 0, -16 )
+position = Vector2( 0, -15 )
 
 [node name="LeftArm" parent="." index="2"]
 position = Vector2( -5, -12 )
