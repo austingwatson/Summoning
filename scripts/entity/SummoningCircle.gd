@@ -10,11 +10,18 @@ var current_formed_demon = null
 func _ready():
 	animated_sprite.play("idle")
 	
+	for candle in candles.get_children():
+		candle.flame.visible = true
+	
 	
 func _physics_process(_delta):
+	candles.get_child(0).flame.visible = true
+	
 	var ready = true
 	for candle in candles.get_children():
 		ready = ready and candle.flame.visible
+	if ready and GlobalValues.tutorial_step == GlobalValues.TutorialStep.LIGHT_CANDLES:
+			GlobalValues.next_tutorial_step()
 	if ready and (animated_sprite.animation == "idle" or animated_sprite.animation == "mouse_over"):
 		if current_formed_demon != null:
 			animated_sprite.play("demon_on")
@@ -27,6 +34,11 @@ func _physics_process(_delta):
 func summon():
 	animated_sprite.play("summon")
 	SoundPlayer.play_summon_sound()
+
+
+func stop_candles():
+	for candle in candles.get_children():
+		candle.flame.visible = false
 
 
 func _on_SummoningCircle_body_entered(body):

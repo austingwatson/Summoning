@@ -15,13 +15,14 @@ func _physics_process(_delta):
 		demon_part = null
 		emit_signal("eat_part")
 		SoundPlayer.play_eating_sound()
+		
+		if GlobalValues.tutorial_step == GlobalValues.TutorialStep.FEED:
+			GlobalValues.next_tutorial_step()
 
 
 func _on_DemonEat_body_entered(body):
 	if GlobalValues.tutorial_step != GlobalValues.TutorialStep.FEED and GlobalValues.tutorial_step < GlobalValues.TutorialStep.FINISHED:
 		return
-	elif GlobalValues.tutorial_step == GlobalValues.TutorialStep.FEED:
-		GlobalValues.next_tutorial_step()
 	
 	if body is DemonPart:
 		demon_part = body

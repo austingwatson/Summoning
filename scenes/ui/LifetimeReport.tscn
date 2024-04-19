@@ -1,0 +1,178 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/m3x6.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://resources/default_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/textures/ui_sheet.png" type="Texture" id=3]
+[ext_resource path="res://scripts/ui/LifetimeReport.gd" type="Script" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 272, 224, 224 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 656, 368, 64, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 3 )
+region = Rect2( 656, 400, 64, 32 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 1 )
+
+[node name="LifetimeReport" type="Node"]
+script = ExtResource( 4 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -112.0
+margin_top = -112.0
+margin_right = 112.0
+margin_bottom = 112.0
+texture = SubResource( 1 )
+stretch_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+
+[node name="MonthlyReportLabel" type="Label" parent="CanvasLayer/Background/VBoxContainer"]
+margin_top = 47.0
+margin_right = 224.0
+margin_bottom = 73.0
+custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Lifetime Report"
+align = 1
+
+[node name="MonthsWorked" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer"]
+margin_top = 77.0
+margin_right = 224.0
+margin_bottom = 90.0
+alignment = 1
+
+[node name="Worked" type="Label" parent="CanvasLayer/Background/VBoxContainer/MonthsWorked"]
+margin_left = 78.0
+margin_right = 137.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Months Worked:"
+align = 1
+
+[node name="Value" type="Label" parent="CanvasLayer/Background/VBoxContainer/MonthsWorked"]
+margin_left = 141.0
+margin_right = 145.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "0"
+align = 1
+
+[node name="PactsSuccess" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer"]
+margin_top = 94.0
+margin_right = 224.0
+margin_bottom = 107.0
+alignment = 1
+
+[node name="Fulfilled" type="Label" parent="CanvasLayer/Background/VBoxContainer/PactsSuccess"]
+margin_left = 79.0
+margin_right = 137.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Pacts Fulfilled:"
+align = 1
+
+[node name="Value" type="Label" parent="CanvasLayer/Background/VBoxContainer/PactsSuccess"]
+margin_left = 141.0
+margin_right = 145.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "0"
+align = 1
+
+[node name="PactsFailed" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer"]
+margin_top = 111.0
+margin_right = 224.0
+margin_bottom = 124.0
+alignment = 1
+
+[node name="Failed" type="Label" parent="CanvasLayer/Background/VBoxContainer/PactsFailed"]
+margin_left = 84.0
+margin_right = 132.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Pacts Failed:"
+align = 1
+
+[node name="Value" type="Label" parent="CanvasLayer/Background/VBoxContainer/PactsFailed"]
+margin_left = 136.0
+margin_right = 140.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "0"
+align = 1
+
+[node name="PartsEaten" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer"]
+margin_top = 128.0
+margin_right = 224.0
+margin_bottom = 141.0
+alignment = 1
+
+[node name="Eaten" type="Label" parent="CanvasLayer/Background/VBoxContainer/PartsEaten"]
+margin_left = 84.0
+margin_right = 131.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Parts Eaten:"
+align = 1
+
+[node name="Value" type="Label" parent="CanvasLayer/Background/VBoxContainer/PartsEaten"]
+margin_left = 135.0
+margin_right = 139.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "0"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer"]
+margin_top = 145.0
+margin_right = 224.0
+margin_bottom = 177.0
+alignment = 1
+
+[node name="Close" type="TextureButton" parent="CanvasLayer/Background/VBoxContainer/HBoxContainer"]
+margin_left = 80.0
+margin_right = 144.0
+margin_bottom = 32.0
+texture_normal = SubResource( 3 )
+texture_hover = SubResource( 4 )
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Background/VBoxContainer/HBoxContainer/Close"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "Close"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="CanvasLayer/Background/VBoxContainer/HBoxContainer/Close" to="." method="_on_Close_pressed"]

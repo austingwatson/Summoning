@@ -159,6 +159,9 @@ func accept():
 		highlight.visible = false
 		animated_sprite.frame = 0
 		animated_sprite.play("smoke")
+		
+		if GlobalValues.tutorial_step == GlobalValues.TutorialStep.ACCEPT_PACT:
+			GlobalValues.next_tutorial_step()
 
 
 func _on_HighlightArea_mouse_entered():

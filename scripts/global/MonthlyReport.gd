@@ -22,14 +22,11 @@ func _ready():
 	background.visible = false
 
 
-func open(pacts_completed, pacts_failed, parts_eaten, _souls_gained, monthly = true):
+func open(pacts_completed, pacts_failed, parts_eaten, _souls_gained, _monthly = true):
 	if GlobalValues.tutorial_step < GlobalValues.TutorialStep.FINISHED:
 		return
 	
-	if monthly:
-		monthly_label.text = "Monthly Report"
-	else:
-		monthly_label.text = "Lifetime Report"
+	total_souls.text = str(current_souls_amount) + "/" + str(GlobalValues.needed_souls)
 	
 	pacts_success_value.text = str(pacts_completed)
 	pacts_fail_value.text = str(pacts_failed)

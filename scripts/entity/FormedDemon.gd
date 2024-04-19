@@ -10,6 +10,7 @@ export (PackedScene) var body4
 
 var original_position = Vector2.ZERO
 var bodies = []
+var offset = Vector2.ZERO
 
 onready var parts = $Parts
 
@@ -23,7 +24,7 @@ func _ready():
 	
 func _physics_process(_delta):
 	if not mouse_down:
-		global_position = original_position
+		global_position = original_position + offset
 	
 
 func form(demon_parts_array: Array):
@@ -50,7 +51,7 @@ func form(demon_parts_array: Array):
 			has_legs = true
 			break
 	if not has_legs:
-		print("not legs")
+		parts.position.y = 25
 	SoundPlayer.play_demon_sound()
 
 func set_home(global_position):

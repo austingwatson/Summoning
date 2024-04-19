@@ -142,14 +142,17 @@ texture = SubResource( 2 )
 [node name="ForegroundHook" type="Sprite" parent="." index="3"]
 visible = false
 position = Vector2( -8, 20 )
-z_index = 4
+z_index = 7
 texture = SubResource( 3 )
 
 [node name="HookBobRange" type="Area2D" parent="." index="4"]
+position = Vector2( -1, 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HookBobRange" index="0"]
-position = Vector2( 2, 17 )
 shape = SubResource( 6 )
+
+[node name="FormedDemonPos" type="Position2D" parent="." index="5"]
+position = Vector2( -2, 25 )
 
 [connection signal="body_entered" from="." to="." method="_on_Hook_body_entered"]
 [connection signal="mouse_entered" from="HookBobRange" to="." method="_on_HookBobRange_mouse_entered"]

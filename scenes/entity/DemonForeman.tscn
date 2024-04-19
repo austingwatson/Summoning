@@ -38,7 +38,7 @@ animations = [ {
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 2 )
-region = Rect2( 0, 129, 3, 5 )
+region = Rect2( 2, 129, 3, 5 )
 
 [node name="DemonForeman" type="Node2D"]
 script = ExtResource( 3 )
@@ -47,6 +47,7 @@ script = ExtResource( 3 )
 position = Vector2( 0, -13 )
 frames = SubResource( 7 )
 animation = "idle"
+frame = 3
 playing = true
 
 [node name="Eye" type="Sprite" parent="."]

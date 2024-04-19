@@ -345,6 +345,9 @@ rect_min_size = Vector2( 8, 8 )
 mouse_filter = 2
 stretch_mode = 3
 
+[node name="FormedSpawnPoint" type="Position2D" parent="." index="10"]
+position = Vector2( 0, -46 )
+
 [connection signal="body_entered" from="." to="." method="_on_DemonAltar_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_DemonAltar_body_exited"]
 [connection signal="input_event" from="Accept" to="." method="_on_Accept_input_event"]

@@ -261,6 +261,6 @@ margin_left = 5.0
 margin_top = 5.0
 margin_right = 59.0
 margin_bottom = 19.0
-custom_colors/font_color = Color( 0.168627, 0.105882, 0.117647, 1 )
+custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
 custom_fonts/font = ExtResource( 3 )
 align = 1

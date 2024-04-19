@@ -35,6 +35,8 @@ func generate_random(zero_min, max_stats: int):
 		var stat = min(round(rand_range(MIN, MAX)), max_stats)
 		if zero_min:
 			stat = max(0, stat)
+		if amount == 0 and stat == 0:
+			stat += 1
 		if amount == 0 and stat < 0:	
 			continue
 		elif amount == 2 and stat > 0:
@@ -76,6 +78,11 @@ func get_stats(array: Array):
 func know_all_properties():
 	for key in known_properties.keys():
 		known_properties[key] = true
+		
+
+func forget_all_properties():
+	for key in known_properties.keys():
+		known_properties[key] = false
 
 
 func know_random_property():

@@ -90,6 +90,11 @@ func disable():
 	#call_deferred("enable")
 	
 
+func disable_collisions():
+	collision_shape.set_deferred("disabled", true)
+	$PushArea/CollisionShape2D.set_deferred("disabled", true)
+	
+
 func push():
 	var closest_position = Vector2(10000, 10000)
 	var closest_distance = 10000

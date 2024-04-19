@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scripts/ui/OpenedPact.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/ui_sheet.png" type="Texture" id=2]
@@ -155,6 +155,9 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=7]
 radius = 15.0
 
+[sub_resource type="RectangleShape2D" id=23]
+extents = Vector2( 64.75, 33 )
+
 [node name="OpenedPact" type="CanvasLayer"]
 visible = false
 script = ExtResource( 1 )
@@ -207,6 +210,7 @@ visible = false
 position = Vector2( 80, 53 )
 frames = SubResource( 22 )
 animation = "hovered"
+frame = 1
 playing = true
 
 [node name="AcceptPact" type="Area2D" parent="."]
@@ -219,5 +223,13 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AcceptPact"]
 shape = SubResource( 7 )
 
+[node name="CloseArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CloseArea"]
+position = Vector2( 121.25, 40 )
+shape = SubResource( 23 )
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="input_event" from="AcceptPact" to="." method="_on_AcceptPact_input_event"]
+[connection signal="mouse_entered" from="CloseArea" to="." method="_on_CloseArea_mouse_entered"]
+[connection signal="mouse_exited" from="CloseArea" to="." method="_on_CloseArea_mouse_exited"]

@@ -16,9 +16,13 @@ front_part_type = 3
 back_part_type = 2
 
 [node name="BackPart" parent="." index="0"]
+z_index = 2
+z_as_relative = false
 texture = SubResource( 1 )
 
 [node name="FrontPart" parent="." index="1"]
+z_index = 5
+z_as_relative = false
 texture = SubResource( 2 )
 
 [node name="FrontPartPosition" parent="." index="2"]

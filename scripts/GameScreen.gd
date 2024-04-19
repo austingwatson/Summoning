@@ -18,6 +18,7 @@ onready var bottom = $DemonPartSpawnBoundary/Bottom
 
 onready var pact_locations = $PactLocations
 onready var hud = $HUD
+onready var hint = $Hint
 
 var pacts_success = 0
 var pacts_fail = 0
@@ -26,13 +27,14 @@ var parts_eaten = 0
 
 func _ready():
 	SoundPlayer.stop_music()
+	SoundPlayer.play_main_music()
 	
 	GlobalValues.game_screen = self
 	MonthlyReport.game_screen = self
 	game_master.next_month(self, pacts.get_child_count(), demon_parts.get_child_count())
 	
 	# for debugging only, comment out for full game
-	call_deferred("skip_tutorial")
+	#call_deferred("skip_tutorial")
 	GlobalValues.reset()
 	
 
@@ -88,6 +90,10 @@ func flame_off():
 	player_demon.flame_off()
 	
 
+func enable_month_button():
+	next_month_button.disabled = false
+	
+
 func start_month():
 	game_master.next_month(self, pacts.get_child_count(), demon_parts.get_child_count())
 	disable_month_timer.start()
@@ -121,6 +127,9 @@ func update_hud():
 func _on_NextMonthButton_pressed():
 	if GlobalValues.tutorial_step < GlobalValues.TutorialStep.NEXT_MONTH:
 		return
+	elif GlobalValues.tutorial_step == GlobalValues.TutorialStep.NEXT_MONTH:
+		GlobalValues.next_tutorial_step()
+		get_node("SpeechBubble").queue_free()
 	
 	for pact in pacts.get_children():
 		pact.next_month()
@@ -135,3 +144,7 @@ func _on_DisableMonthTimer_timeout():
 
 func _on_PlayerDemon_eat_part():
 	parts_eaten += 1
+
+
+func _on_Question_pressed():
+	hint.toggle()

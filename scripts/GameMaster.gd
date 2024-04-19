@@ -10,12 +10,15 @@ var month = -1
 
 func next_month(game_screen, current_pacts, current_demon_parts):
 	month += 1
+	GlobalValues.total_months_worked = month - 1
 	if month == 0: # tutorial month, spawn one pact and perfect demon parts
 		# tutorial pact
 		var pact = pact_scene.instance()
 		pact.position = Vector2(10, 10)
 		game_screen.add_pact(pact)
 		pact.part_stats.set_all(1, 1, 0, 0)
+		pact.lines.clear()
+		pact.lines.append("I require a demon of any nature.")
 		
 		# tutorial head part
 		var head_part = demon_part_scene.instance()

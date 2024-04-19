@@ -19,6 +19,7 @@ onready var lethality = $Lethality
 onready var endurance = $Endurance
 onready var charm = $Charm
 onready var speed = $Speed
+onready var formed_point = $FormedSpawnPoint
 
 func _ready():
 	empty_parts()
@@ -31,9 +32,10 @@ func _ready():
 	leg_part.global_position = part_positions.get_child(0).global_position
 	leg_part.part_type = DemonPart.PartType.LEG
 	get_parent().call_deferred("add_demon_part", leg_part)
-	leg_part.call_deferred("disable")
+	leg_part.call_deferred("disable_collisions")
 	parts[DemonPart.PartType.LEG] = leg_part
 	part_positions.get_child(0).visible = false
+	set_known_properties(leg_part)
 	
 	var arm_part = demon_part_scene.instance()
 	arm_part.part_type = DemonPart.PartType.HEAD
@@ -41,9 +43,10 @@ func _ready():
 	arm_part.global_position = part_positions.get_child(2).global_position
 	arm_part.part_type = DemonPart.PartType.ARM
 	get_parent().call_deferred("add_demon_part", arm_part)
-	arm_part.call_deferred("disable")
+	arm_part.call_deferred("disable_collisions")
 	parts[DemonPart.PartType.ARM] = arm_part
 	part_positions.get_child(2).visible = false
+	set_known_properties(arm_part)
 	
 	accept_sprite.texture = base_accept
 	
@@ -64,18 +67,23 @@ func _physics_process(_delta):
 			demon_part.alter_location = array[0]
 			current_demon_parts.erase(demon_part)
 			
-			var known_properties = demon_part.part_stats.known_properties
-			for key in known_properties.keys():
-				if known_properties[key]:
-					match key:
-						"lethality":
-							set_lethality(demon_part.part_stats.lethality)
-						"endurance":
-							set_endurance(demon_part.part_stats.endurance)
-						"charm":
-							set_charm(demon_part.part_stats.charm)
-						"speed":
-							set_speed(demon_part.part_stats.speed)
+			set_known_properties(demon_part)
+							
+
+func set_known_properties(demon_part):
+	var known_properties = demon_part.part_stats.known_properties
+	for key in known_properties.keys():
+		if known_properties[key]:
+			match key:
+				"lethality":
+					set_lethality(demon_part.part_stats.lethality)
+				"endurance":
+					set_endurance(demon_part.part_stats.endurance)
+				"charm":
+					set_charm(demon_part.part_stats.charm)
+				"speed":
+					set_speed(demon_part.part_stats.speed)
+
 
 func set_lethality(amount):
 	if amount < 0:
@@ -122,7 +130,7 @@ func set_speed(amount):
 				amount -= 1
 				if amount == 0:
 					break					
-					
+
 
 func remove_lethality(amount):
 	if amount < 0:
@@ -173,6 +181,17 @@ func remove_speed(amount):
 				amount -= 1
 				if amount == 0:
 					break
+					
+
+func remove_all_stats():
+	for icon in lethality.get_children():
+		icon.texture = null
+	for icon in endurance.get_children():
+		icon.texture = null
+	for icon in charm.get_children():
+		icon.texture = null
+	for icon in speed.get_children():
+		icon.texture = null
 
 
 func empty_parts():
@@ -227,7 +246,10 @@ func _on_DemonAltar_body_entered(body):
 		GlobalValues.next_tutorial_step()
 	
 	if not has_formed_demon and body is DemonPart:
-		current_demon_parts.append(body)
+		if body.part_type != DemonPart.PartType.FORMED:
+			current_demon_parts.append(body)
+		else:
+			set_formed_dummy(body, formed_point.global_position)
 
 
 func _on_DemonAltar_body_exited(body):
@@ -254,7 +276,7 @@ func _on_DemonAltar_body_exited(body):
 
 
 func _on_Accept_input_event(_viewport, event, _shape_idx):
-	if event is InputEventMouseButton and event.is_action_pressed("click"):
+	if event is InputEventMouseButton and event.is_action_released("click"):
 		if GlobalValues.tutorial_step != GlobalValues.TutorialStep.ACCEPT and GlobalValues.tutorial_step < GlobalValues.TutorialStep.HOOK:
 			return
 		elif GlobalValues.tutorial_step == GlobalValues.TutorialStep.ACCEPT:
@@ -275,7 +297,7 @@ func _on_Accept_input_event(_viewport, event, _shape_idx):
 			get_parent().add_child(formed_demon)
 		
 			formed_demon.form(parts.values())
-			set_formed_dummy(formed_demon, self.global_position)
+			set_formed_dummy(formed_demon, formed_point.global_position)
 	
 		empty_parts()
 

@@ -18,6 +18,7 @@ onready var label = $Background/Label
 
 var pact = null
 var frames = []
+var hovering = false
 
 
 func _ready():
@@ -32,9 +33,15 @@ func _ready():
 	frames.append(success5)
 	frames.append(success6)
 	frames.append(success7)
+	
+
+func _input(event):
+	if not hovering and event.is_action_pressed("click"):
+		close()
 
 
 func open(pact):
+	label.visible = true
 	visible = true
 	animation_player.play("open_pact")
 	if is_instance_valid(self.pact) and self.pact != null:
@@ -51,6 +58,10 @@ func open(pact):
 
 func close():
 	visible = false
+	if is_instance_valid(pact) and pact != null:
+		pact.highlight.visible = false
+		pact.mouse_inside = false
+		pact.mouse_down = false
 	pact = null
 	
 
@@ -63,16 +74,24 @@ func finish(accepted):
 
 func set_background(frame):
 	background.texture = frames[frame]
+	
+	if frame == 6:
+		label.visible = false
 
 
 func _on_AcceptPact_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.is_action_released("click"):
-		if GlobalValues.tutorial_step == GlobalValues.TutorialStep.ACCEPT_PACT:
-			GlobalValues.next_tutorial_step()
-		
 		pact.accept()
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "pact_failed" or anim_name == "pact_success":
 		close()
+
+
+func _on_CloseArea_mouse_entered():
+	hovering = true
+
+
+func _on_CloseArea_mouse_exited():
+	hovering = false

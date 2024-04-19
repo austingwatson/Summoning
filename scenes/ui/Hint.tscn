@@ -1,0 +1,223 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/m3x6.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/textures/ui_sheet.png" type="Texture" id=2]
+[ext_resource path="res://scripts/ui/Hint.gd" type="Script" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 272, 224, 224 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 26
+font_data = ExtResource( 1 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 48, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 656, 368, 64, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 656, 400, 64, 32 )
+
+[node name="Hint" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -112.0
+margin_top = -112.0
+margin_right = 112.0
+margin_bottom = 112.0
+texture = SubResource( 1 )
+stretch_mode = 3
+
+[node name="Page_1" type="VBoxContainer" parent="CanvasLayer/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 23.0
+margin_right = -23.0
+
+[node name="Guide" type="Label" parent="CanvasLayer/Background/Page_1"]
+margin_right = 181.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Guide"
+align = 1
+valign = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background/Page_1"]
+margin_top = 26.0
+margin_right = 181.0
+margin_bottom = 152.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background/Page_1/VBoxContainer"]
+margin_right = 181.0
+margin_bottom = 126.0
+alignment = 1
+
+[node name="Text" type="Label" parent="CanvasLayer/Background/Page_1/VBoxContainer/VBoxContainer"]
+margin_right = 181.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Sins grant demons abilities."
+
+[node name="Wrath" type="HBoxContainer" parent="CanvasLayer/Background/Page_1/VBoxContainer/VBoxContainer"]
+margin_top = 26.0
+margin_right = 181.0
+margin_bottom = 48.0
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/Background/Page_1/VBoxContainer/VBoxContainer/Wrath"]
+margin_right = 16.0
+margin_bottom = 22.0
+texture = SubResource( 3 )
+stretch_mode = 3
+
+[node name="Text" type="Label" parent="CanvasLayer/Background/Page_1/VBoxContainer/VBoxContainer/Wrath"]
+margin_left = 20.0
+margin_right = 174.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Wrath grants lethality."
+
+[node name="Envy" type="HBoxContainer" parent="CanvasLayer/Background/Page_1/VBoxContainer/VBoxContainer"]
+margin_top = 52.0
+margin_right = 181.0
+margin_bottom = 74.0
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/Background/Page_1/VBoxContainer/VBoxContainer/Envy"]
+margin_right = 16.0
+margin_bottom = 22.0
+texture = SubResource( 4 )
+stretch_mode = 3
+
+[node name="Text" type="Label" parent="CanvasLayer/Background/Page_1/VBoxContainer/VBoxContainer/Envy"]
+margin_left = 20.0
+margin_right = 172.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Envy grants endurance."
+
+[node name="Pride" type="HBoxContainer" parent="CanvasLayer/Background/Page_1/VBoxContainer/VBoxContainer"]
+margin_top = 78.0
+margin_right = 181.0
+margin_bottom = 100.0
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/Background/Page_1/VBoxContainer/VBoxContainer/Pride"]
+margin_right = 16.0
+margin_bottom = 22.0
+texture = SubResource( 5 )
+stretch_mode = 3
+
+[node name="Text" type="Label" parent="CanvasLayer/Background/Page_1/VBoxContainer/VBoxContainer/Pride"]
+margin_left = 20.0
+margin_right = 150.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Pride grants charm."
+
+[node name="Greed" type="HBoxContainer" parent="CanvasLayer/Background/Page_1/VBoxContainer/VBoxContainer"]
+margin_top = 104.0
+margin_right = 181.0
+margin_bottom = 126.0
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/Background/Page_1/VBoxContainer/VBoxContainer/Greed"]
+margin_right = 16.0
+margin_bottom = 22.0
+texture = SubResource( 6 )
+stretch_mode = 3
+
+[node name="Text" type="Label" parent="CanvasLayer/Background/Page_1/VBoxContainer/VBoxContainer/Greed"]
+margin_left = 20.0
+margin_right = 151.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Greed grants speed."
+
+[node name="Label" type="Label" parent="CanvasLayer/Background/Page_1"]
+margin_top = 156.0
+margin_right = 181.0
+margin_bottom = 203.0
+custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Eat Demon Parts to learn 
+their abilities."
+
+[node name="Page_2" type="VBoxContainer" parent="CanvasLayer/Background"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 23.0
+margin_right = -23.0
+
+[node name="Guide" type="Label" parent="CanvasLayer/Background/Page_2"]
+margin_right = 190.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Guide"
+align = 1
+valign = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Background/Page_2"]
+margin_top = 26.0
+margin_right = 190.0
+margin_bottom = 198.0
+custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Your master demands souls 
+every month. Fulfill pacts
+to earn mortal souls. Pacts
+expire after three months.
+Read pacts to learn ability
+requirements. Send demons
+with the pentacle."
+
+[node name="Next" type="TextureButton" parent="CanvasLayer"]
+visible = false
+margin_left = 272.0
+margin_top = 199.0
+margin_right = 336.0
+margin_bottom = 231.0
+texture_normal = SubResource( 7 )
+texture_hover = SubResource( 8 )
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Next"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Next"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="CanvasLayer/Next" to="." method="_on_Next_pressed"]

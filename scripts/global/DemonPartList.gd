@@ -80,6 +80,17 @@ func _ready():
 	legs.append(thick_leg)
 	legs.append(backward_knee_leg)
 	legs.append(goat_leg)
+	
+
+func reset():
+	for arm in arms:
+		arm.forget_all_properties()
+	for body in bodies:
+		body.forget_all_properties()
+	for head in heads:
+		head.forget_all_properties()
+	for leg in legs:
+		leg.forget_all_properties()
 
 
 func get_random_arm():

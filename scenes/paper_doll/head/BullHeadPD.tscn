@@ -11,6 +11,8 @@ region = Rect2( 480, 112, 32, 32 )
 front_part_type = 1
 
 [node name="FrontPart" parent="." index="0"]
+z_index = 4
+z_as_relative = false
 texture = SubResource( 1 )
 
 [node name="FrontPartPosition" parent="." index="1"]
