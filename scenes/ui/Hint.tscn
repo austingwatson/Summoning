@@ -201,6 +201,31 @@ Read pacts to learn ability
 requirements. Send demons
 with the pentacle."
 
+[node name="Page_3" type="VBoxContainer" parent="CanvasLayer/Background"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 23.0
+margin_right = -23.0
+
+[node name="Guide" type="Label" parent="CanvasLayer/Background/Page_3"]
+margin_right = 178.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Guide"
+align = 1
+valign = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Background/Page_3"]
+margin_top = 26.0
+margin_right = 178.0
+margin_bottom = 123.0
+custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "For every pact failed your master raises your soul quota by ONE. All pacts earn THREE souls."
+autowrap = true
+
 [node name="Next" type="TextureButton" parent="CanvasLayer"]
 visible = false
 margin_left = 272.0
@@ -220,4 +245,8 @@ text = "Next"
 align = 1
 valign = 1
 
+[connection signal="mouse_entered" from="CanvasLayer/Background" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Background" to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/Next" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Next" to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/Next" to="." method="_on_Next_pressed"]

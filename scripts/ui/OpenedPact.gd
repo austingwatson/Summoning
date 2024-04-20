@@ -15,6 +15,7 @@ export (AtlasTexture) var success7
 onready var animation_player = $AnimationPlayer
 onready var background = $Background
 onready var label = $Background/Label
+onready var highlight = $Highlight
 
 var pact = null
 var frames = []
@@ -95,3 +96,11 @@ func _on_CloseArea_mouse_entered():
 
 func _on_CloseArea_mouse_exited():
 	hovering = false
+
+
+func _on_AcceptPact_mouse_entered():
+	highlight.visible = true
+
+
+func _on_AcceptPact_mouse_exited():
+	highlight.visible = false

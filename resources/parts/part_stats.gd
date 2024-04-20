@@ -43,6 +43,8 @@ func generate_random(zero_min, max_stats: int):
 			break
 		elif abs(stat) > max_stats:
 			break
+		elif amount == 1 and stat > 4:
+			stat = 4
 		max_stats -= abs(stat)
 		amount += 1
 		match i:

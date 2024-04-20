@@ -93,6 +93,17 @@ func reset():
 		leg.forget_all_properties()
 
 
+func show_all_properties():
+	for arm in arms:
+		arm.know_all_properties()
+	for body in bodies:
+		body.know_all_properties()
+	for head in heads:
+		head.know_all_properties()
+	for leg in legs:
+		leg.know_all_properties()
+
+
 func get_random_arm():
 	return arms[randi() % arms.size()]
 

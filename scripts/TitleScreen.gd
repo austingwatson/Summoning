@@ -20,6 +20,7 @@ func _input(event):
 func _on_Play_pressed():
 	#get_tree().change_scene("res://scenes/TestScene.tscn")
 	SoundPlayer.stop_music()
+	GlobalValues.tutorial_step = GlobalValues.TutorialStep.FINISHED
 	get_tree().change_scene("res://scenes/GameScreen.tscn")
 
 
@@ -29,3 +30,9 @@ func _on_Volume_value_changed(value):
 		AudioServer.set_bus_mute(SoundPlayer.sound_db, true)
 	else:
 		AudioServer.set_bus_mute(SoundPlayer.sound_db, false)
+
+
+func _on_Tutorial_pressed():
+	SoundPlayer.stop_music()
+	GlobalValues.tutorial_step = GlobalValues.TutorialStep.MOVE_PART_1
+	get_tree().change_scene("res://scenes/GameScreen.tscn")

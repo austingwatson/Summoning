@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/global/MonthlyReport.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/ui_sheet.png" type="Texture" id=2]
@@ -23,6 +23,10 @@ region = Rect2( 0, 272, 224, 224 )
 size = 32
 font_data = ExtResource( 5 )
 
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 80, 16, 16 )
+
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 2 )
 region = Rect2( 656, 368, 64, 32 )
@@ -31,10 +35,6 @@ region = Rect2( 656, 368, 64, 32 )
 atlas = ExtResource( 2 )
 region = Rect2( 656, 400, 64, 32 )
 
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 2 )
-region = Rect2( 64, 80, 16, 16 )
-
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 2 )
 region = Rect2( 656, 368, 64, 32 )
@@ -42,6 +42,10 @@ region = Rect2( 656, 368, 64, 32 )
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 2 )
 region = Rect2( 656, 400, 64, 32 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 2 )
+region = Rect2( 656, 432, 64, 32 )
 
 [node name="MonthlyReport" type="Node"]
 script = ExtResource( 1 )
@@ -62,24 +66,35 @@ margin_bottom = 112.0
 texture = SubResource( 1 )
 stretch_mode = 3
 
+[node name="PayLabel" type="Label" parent="CanvasLayer/Background"]
+margin_top = 133.0
+margin_right = 224.0
+margin_bottom = 162.0
+custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "PAY
+SOUL QUOTA"
+align = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_constants/separation = 0
 alignment = 1
 
 [node name="MonthlyReportLabel" type="Label" parent="CanvasLayer/Background/VBoxContainer"]
-margin_top = 7.0
+margin_top = 24.0
 margin_right = 224.0
-margin_bottom = 33.0
+margin_bottom = 50.0
 custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "Monthly Report"
 align = 1
 
 [node name="PactsSuccess" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer"]
-margin_top = 37.0
+margin_top = 50.0
 margin_right = 224.0
-margin_bottom = 50.0
+margin_bottom = 63.0
 alignment = 1
 
 [node name="Fulfilled" type="Label" parent="CanvasLayer/Background/VBoxContainer/PactsSuccess"]
@@ -101,9 +116,9 @@ text = "0"
 align = 1
 
 [node name="PactsFailed" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer"]
-margin_top = 54.0
+margin_top = 63.0
 margin_right = 224.0
-margin_bottom = 67.0
+margin_bottom = 76.0
 alignment = 1
 
 [node name="Failed" type="Label" parent="CanvasLayer/Background/VBoxContainer/PactsFailed"]
@@ -125,9 +140,9 @@ text = "0"
 align = 1
 
 [node name="PartsEaten" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer"]
-margin_top = 71.0
+margin_top = 76.0
 margin_right = 224.0
-margin_bottom = 84.0
+margin_bottom = 89.0
 alignment = 1
 
 [node name="Eaten" type="Label" parent="CanvasLayer/Background/VBoxContainer/PartsEaten"]
@@ -149,46 +164,76 @@ text = "0"
 align = 1
 
 [node name="Souls" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer"]
-margin_top = 88.0
+margin_top = 89.0
 margin_right = 224.0
-margin_bottom = 146.0
-custom_constants/separation = 15
+margin_bottom = 147.0
+custom_constants/separation = 10
 alignment = 1
 
 [node name="Wrath" parent="CanvasLayer/Background/VBoxContainer/Souls" instance=ExtResource( 4 )]
-margin_left = 25.0
-margin_right = 57.0
+margin_left = 20.0
+margin_right = 52.0
 margin_bottom = 58.0
 soul_type = 1
 
 [node name="Envy" parent="CanvasLayer/Background/VBoxContainer/Souls" instance=ExtResource( 4 )]
-margin_left = 72.0
-margin_right = 104.0
+margin_left = 62.0
+margin_right = 94.0
 margin_bottom = 58.0
 soul_type = 2
 
+[node name="TotalSouls" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Souls"]
+margin_left = 104.0
+margin_right = 120.0
+margin_bottom = 58.0
+custom_constants/separation = -5
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Background/VBoxContainer/Souls/TotalSouls"]
+margin_top = 17.0
+margin_right = 16.0
+margin_bottom = 33.0
+texture = SubResource( 6 )
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/Background/VBoxContainer/Souls/TotalSouls"]
+margin_top = 28.0
+margin_right = 16.0
+margin_bottom = 41.0
+custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "0/2"
+align = 1
+valign = 1
+
 [node name="Pride" parent="CanvasLayer/Background/VBoxContainer/Souls" instance=ExtResource( 4 )]
-margin_left = 119.0
-margin_right = 151.0
+margin_left = 130.0
+margin_right = 162.0
 margin_bottom = 58.0
 
 [node name="Greed" parent="CanvasLayer/Background/VBoxContainer/Souls" instance=ExtResource( 4 )]
-margin_left = 166.0
-margin_right = 198.0
+margin_left = 172.0
+margin_right = 204.0
 margin_bottom = 58.0
 soul_type = 3
 
-[node name="Buttons" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer"]
-margin_top = 150.0
+[node name="Control" type="Control" parent="CanvasLayer/Background/VBoxContainer"]
+margin_top = 147.0
 margin_right = 224.0
-margin_bottom = 183.0
-custom_constants/separation = 20
+margin_bottom = 167.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="Buttons" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer"]
+margin_top = 167.0
+margin_right = 224.0
+margin_bottom = 199.0
+custom_constants/separation = 50
 alignment = 1
 
 [node name="Clear" type="TextureButton" parent="CanvasLayer/Background/VBoxContainer/Buttons"]
-margin_left = 20.0
-margin_right = 84.0
-margin_bottom = 33.0
+margin_left = 23.0
+margin_right = 87.0
+margin_bottom = 32.0
 texture_normal = SubResource( 3 )
 texture_hover = SubResource( 4 )
 
@@ -201,34 +246,13 @@ text = "Clear"
 align = 1
 valign = 1
 
-[node name="TotalSouls" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Buttons"]
-margin_left = 104.0
-margin_top = -30.0
-margin_right = 120.0
-margin_bottom = 3.0
-
-[node name="Label" type="Label" parent="CanvasLayer/Background/VBoxContainer/Buttons/TotalSouls"]
-margin_top = 13.0
-margin_right = 16.0
-margin_bottom = 26.0
-custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
-custom_fonts/font = ExtResource( 3 )
-text = "0/2"
-align = 1
-valign = 1
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Background/VBoxContainer/Buttons/TotalSouls"]
-margin_right = 16.0
-margin_bottom = 16.0
-texture = SubResource( 6 )
-stretch_mode = 3
-
 [node name="Commit" type="TextureButton" parent="CanvasLayer/Background/VBoxContainer/Buttons"]
-margin_left = 140.0
-margin_right = 204.0
-margin_bottom = 33.0
+margin_left = 137.0
+margin_right = 201.0
+margin_bottom = 32.0
 texture_normal = SubResource( 2 )
 texture_hover = SubResource( 5 )
+texture_disabled = SubResource( 10 )
 
 [node name="Label" type="Label" parent="CanvasLayer/Background/VBoxContainer/Buttons/Commit"]
 anchor_right = 1.0
@@ -238,16 +262,6 @@ custom_fonts/font = ExtResource( 3 )
 text = "Commit"
 align = 1
 valign = 1
-
-[node name="Label" type="Label" parent="CanvasLayer/Background/VBoxContainer"]
-margin_top = 144.0
-margin_right = 224.0
-margin_bottom = 173.0
-custom_colors/font_color = Color( 0.968627, 0.960784, 0.321569, 1 )
-custom_fonts/font = ExtResource( 3 )
-text = "PAY
-SOUL QUOTA"
-align = 1
 
 [node name="BigEye" parent="CanvasLayer/Background" instance=ExtResource( 6 )]
 position = Vector2( 113, 199 )

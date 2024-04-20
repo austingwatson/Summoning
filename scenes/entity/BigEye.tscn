@@ -46,6 +46,7 @@ script = ExtResource( 3 )
 [node name="Eye" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -5 )
 frames = SubResource( 7 )
+frame = 1
 playing = true
 
 [node name="Pupil" type="Sprite" parent="."]

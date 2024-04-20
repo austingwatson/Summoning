@@ -31,11 +31,16 @@ func _ready():
 	
 	GlobalValues.game_screen = self
 	MonthlyReport.game_screen = self
+	if GlobalValues.tutorial_step == GlobalValues.TutorialStep.FINISHED:
+		game_master.month = 0
+		$SpeechBubble.visible = false
+		disable_month_timer.start()
 	game_master.next_month(self, pacts.get_child_count(), demon_parts.get_child_count())
 	
 	# for debugging only, comment out for full game
 	#call_deferred("skip_tutorial")
 	GlobalValues.reset()
+	#DemonPartList.show_all_properties()
 	
 
 func skip_tutorial():
@@ -95,7 +100,9 @@ func enable_month_button():
 	
 
 func start_month():
-	game_master.next_month(self, pacts.get_child_count(), demon_parts.get_child_count())
+	for part in demon_parts.get_children():
+		part.queue_free()
+	game_master.next_month(self, pacts.get_child_count(), 0)
 	disable_month_timer.start()
 	
 	GlobalValues.total_pacts_completed += pacts_success

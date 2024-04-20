@@ -39,7 +39,7 @@ func next_month(game_screen, current_pacts, current_demon_parts):
 		spawn_demon_parts(game_screen, 12)
 	else:
 		spawn_pacts(game_screen, min(3, MAX_PACTS - current_pacts))
-		spawn_demon_parts(game_screen, min(8, MAX_DEMON_PARTS - current_demon_parts))
+		spawn_demon_parts(game_screen, min(12, MAX_DEMON_PARTS - current_demon_parts))
 	
 		
 func spawn_pacts(game_screen, amount: int):

@@ -20,3 +20,6 @@ func _ready():
 func _on_Candle_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.is_action_released("click"):
 		flame.visible = not flame.visible
+		
+		if flame.visible:
+			SoundPlayer.play_ignite_hand_sound()

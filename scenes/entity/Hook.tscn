@@ -28,7 +28,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, -18 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("ForegroundHook:position")
@@ -80,7 +80,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 8 ) ]
+"values": [ Vector2( 0, -18 ), Vector2( 0, -10 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("ForegroundHook:position")
@@ -113,7 +113,7 @@ extents = Vector2( 10, 10.5 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 3 )
-region = Rect2( 4, 189, 28, 67 )
+region = Rect2( 4, 153, 28, 103 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 3 )
@@ -136,11 +136,11 @@ position = Vector2( -4, 22.5 )
 shape = SubResource( 1 )
 
 [node name="BackgroundHook" type="Sprite" parent="." index="2"]
+position = Vector2( 0, -18 )
 z_index = 1
 texture = SubResource( 2 )
 
 [node name="ForegroundHook" type="Sprite" parent="." index="3"]
-visible = false
 position = Vector2( -8, 20 )
 z_index = 7
 texture = SubResource( 3 )
@@ -149,6 +149,7 @@ texture = SubResource( 3 )
 position = Vector2( -1, 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HookBobRange" index="0"]
+position = Vector2( 2, 17 )
 shape = SubResource( 6 )
 
 [node name="FormedDemonPos" type="Position2D" parent="." index="5"]

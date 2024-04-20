@@ -75,7 +75,6 @@ texture = SubResource( 13 )
 position = Vector2( 0, -8 )
 frames = SubResource( 12 )
 animation = "flame_1"
-frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

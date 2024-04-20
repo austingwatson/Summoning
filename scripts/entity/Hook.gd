@@ -19,6 +19,21 @@ func _physics_process(_delta):
 			animation_player.play("RESET")
 	else:
 		foreground_hook.visible = false
+		
+
+func _on_FormedDummy_new_home_set(formed_demon):
+	if has_formed_demon:
+		var has_head = false
+		var has_legs = false
+		for part in formed_demon.parts.get_children():
+			if part.front_part_type == PaperDoll.FrontType.HEAD:
+				has_head = true
+				break
+			elif part.front_part_type == PaperDoll.FrontType.RIGHT_LEG:
+				has_legs = true
+		if not has_head and not has_legs:
+			formed_demon.parts.position.y = 25
+	._on_FormedDummy_new_home_set(formed_demon)
 
 
 func _on_Hook_body_entered(body):
@@ -26,6 +41,16 @@ func _on_Hook_body_entered(body):
 		return
 	
 	if not has_formed_demon and body is FormedDemon:
+		var has_head = false
+		var has_legs = false
+		for part in body.parts.get_children():
+			if part.front_part_type == PaperDoll.FrontType.HEAD:
+				has_head = true
+			elif part.front_part_type == PaperDoll.FrontType.RIGHT_LEG:
+				has_legs = true
+		if not has_head and not has_legs:
+			print("has neighter")
+			body.parts.position.y = 0
 		set_formed_dummy(body, formed_demon_pos.global_position)
 		SoundPlayer.play_hook_sound()
 		

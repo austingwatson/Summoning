@@ -20,33 +20,35 @@ onready var endurance = $Endurance
 onready var charm = $Charm
 onready var speed = $Speed
 onready var formed_point = $FormedSpawnPoint
+onready var spawn_demon = $SpawnDemon
 
 func _ready():
 	empty_parts()
 	
-	var demon_part_scene = preload("res://scenes/entity/DemonPart.tscn")
+	if GlobalValues.tutorial_step != GlobalValues.TutorialStep.FINISHED:
+		var demon_part_scene = preload("res://scenes/entity/DemonPart.tscn")
 	
-	var leg_part = demon_part_scene.instance()
-	leg_part.part_type = DemonPart.PartType.HEAD
-	leg_part.part_stats = preload("res://resources/parts/tutorial/TutorialLeg.tres")
-	leg_part.global_position = part_positions.get_child(0).global_position
-	leg_part.part_type = DemonPart.PartType.LEG
-	get_parent().call_deferred("add_demon_part", leg_part)
-	leg_part.call_deferred("disable_collisions")
-	parts[DemonPart.PartType.LEG] = leg_part
-	part_positions.get_child(0).visible = false
-	set_known_properties(leg_part)
+		var leg_part = demon_part_scene.instance()
+		leg_part.part_type = DemonPart.PartType.HEAD
+		leg_part.part_stats = preload("res://resources/parts/tutorial/TutorialLeg.tres")
+		leg_part.global_position = part_positions.get_child(0).global_position
+		leg_part.part_type = DemonPart.PartType.LEG
+		get_parent().call_deferred("add_demon_part", leg_part)
+		leg_part.call_deferred("disable_collisions")
+		parts[DemonPart.PartType.LEG] = leg_part
+		part_positions.get_child(0).visible = false
+		set_known_properties(leg_part)
 	
-	var arm_part = demon_part_scene.instance()
-	arm_part.part_type = DemonPart.PartType.HEAD
-	arm_part.part_stats = preload("res://resources/parts/tutorial/TutorialArm.tres")
-	arm_part.global_position = part_positions.get_child(2).global_position
-	arm_part.part_type = DemonPart.PartType.ARM
-	get_parent().call_deferred("add_demon_part", arm_part)
-	arm_part.call_deferred("disable_collisions")
-	parts[DemonPart.PartType.ARM] = arm_part
-	part_positions.get_child(2).visible = false
-	set_known_properties(arm_part)
+		var arm_part = demon_part_scene.instance()
+		arm_part.part_type = DemonPart.PartType.HEAD
+		arm_part.part_stats = preload("res://resources/parts/tutorial/TutorialArm.tres")
+		arm_part.global_position = part_positions.get_child(2).global_position
+		arm_part.part_type = DemonPart.PartType.ARM
+		get_parent().call_deferred("add_demon_part", arm_part)
+		arm_part.call_deferred("disable_collisions")
+		parts[DemonPart.PartType.ARM] = arm_part
+		part_positions.get_child(2).visible = false
+		set_known_properties(arm_part)
 	
 	accept_sprite.texture = base_accept
 	
@@ -298,6 +300,11 @@ func _on_Accept_input_event(_viewport, event, _shape_idx):
 		
 			formed_demon.form(parts.values())
 			set_formed_dummy(formed_demon, formed_point.global_position)
+			
+			spawn_demon.frame = 0
+			spawn_demon.play("spawn")
+			spawn_demon.visible = true
+			formed_demon.set_deferred("visible", false)
 	
 		empty_parts()
 
@@ -309,3 +316,8 @@ func _on_Accept_mouse_entered():
 func _on_Accept_mouse_exited():
 	accept_sprite.texture = base_accept
 	animation_player.stop()
+
+
+func _on_SpawnDemon_animation_finished():
+	spawn_demon.visible = false
+	formed_demon.visible = true

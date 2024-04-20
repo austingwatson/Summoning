@@ -1,21 +1,22 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/entity/FormedDemonHolder.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/entity/DemonAltar.gd" type="Script" id=2]
 [ext_resource path="res://assets/textures/slab.png" type="Texture" id=3]
 [ext_resource path="res://assets/textures/ui_sheet.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/slab-sheet.png" type="Texture" id=5]
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 4 )
-region = Rect2( 624, 272, 32, 32 )
+region = Rect2( 688, 272, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 4 )
-region = Rect2( 624, 304, 32, 32 )
+region = Rect2( 720, 272, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 4 )
-region = Rect2( 656, 304, 32, 32 )
+region = Rect2( 720, 272, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 4 )
@@ -60,6 +61,34 @@ extents = Vector2( 24, 20 )
 
 [sub_resource type="AtlasTexture" id=8]
 region = Rect2( 624, 272, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 240, 240 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 5 )
+region = Rect2( 240, 0, 240, 240 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 5 )
+region = Rect2( 480, 0, 240, 240 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 5 )
+region = Rect2( 720, 0, 240, 240 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 5 )
+region = Rect2( 960, 0, 240, 240 )
+
+[sub_resource type="SpriteFrames" id=17]
+animations = [ {
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
+"loop": false,
+"name": "spawn",
+"speed": 10.0
+} ]
 
 [node name="DemonAltar" instance=ExtResource( 1 )]
 collision_layer = 8
@@ -348,8 +377,15 @@ stretch_mode = 3
 [node name="FormedSpawnPoint" type="Position2D" parent="." index="10"]
 position = Vector2( 0, -46 )
 
+[node name="SpawnDemon" type="AnimatedSprite" parent="." index="11"]
+visible = false
+position = Vector2( 0, -46 )
+frames = SubResource( 17 )
+animation = "spawn"
+
 [connection signal="body_entered" from="." to="." method="_on_DemonAltar_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_DemonAltar_body_exited"]
 [connection signal="input_event" from="Accept" to="." method="_on_Accept_input_event"]
 [connection signal="mouse_entered" from="Accept" to="." method="_on_Accept_mouse_entered"]
 [connection signal="mouse_exited" from="Accept" to="." method="_on_Accept_mouse_exited"]
+[connection signal="animation_finished" from="SpawnDemon" to="." method="_on_SpawnDemon_animation_finished"]

@@ -105,6 +105,9 @@ func next_tutorial_step():
 		
 		for part in game_screen.demon_parts.get_children():
 			part.queue_free()
+			
+	if tutorial_step > TutorialStep.FINISHED:
+		tutorial_step = TutorialStep.FINISHED
 
 
 func reset():

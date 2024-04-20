@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scripts/ui/OpenedPact.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/ui_sheet.png" type="Texture" id=2]
@@ -152,6 +152,10 @@ animations = [ {
 "speed": 10.0
 } ]
 
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 2 )
+region = Rect2( 192, 96, 32, 32 )
+
 [sub_resource type="CircleShape2D" id=7]
 radius = 15.0
 
@@ -182,9 +186,9 @@ anims/pact_success = SubResource( 17 )
 [node name="Background" type="TextureRect" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -184.0
+margin_left = -119.0
 margin_top = 8.0
-margin_right = -56.0
+margin_right = 9.0
 margin_bottom = 72.0
 mouse_filter = 2
 texture = SubResource( 5 )
@@ -200,21 +204,21 @@ margin_bottom = -17.0
 custom_colors/font_color = Color( 0.168627, 0.105882, 0.117647, 1 )
 custom_constants/line_spacing = 0
 custom_fonts/font = SubResource( 19 )
-text = "This is test text
-ffffffffffffffffff
-sdafsadfsfsdfsdfasdfdf"
+text = "I require a demon of any nature."
 autowrap = true
 
 [node name="Highlight" type="AnimatedSprite" parent="."]
 visible = false
-position = Vector2( 80, 53 )
+position = Vector2( 145, 53 )
 frames = SubResource( 22 )
 animation = "hovered"
-frame = 1
 playing = true
 
+[node name="Sprite" type="Sprite" parent="Highlight"]
+texture = SubResource( 24 )
+
 [node name="AcceptPact" type="Area2D" parent="."]
-position = Vector2( 79, 54 )
+position = Vector2( 144, 54 )
 collision_layer = 32768
 collision_mask = 0
 monitoring = false
@@ -224,6 +228,7 @@ monitorable = false
 shape = SubResource( 7 )
 
 [node name="CloseArea" type="Area2D" parent="."]
+position = Vector2( 65, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CloseArea"]
 position = Vector2( 121.25, 40 )
@@ -231,5 +236,7 @@ shape = SubResource( 23 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="input_event" from="AcceptPact" to="." method="_on_AcceptPact_input_event"]
+[connection signal="mouse_entered" from="AcceptPact" to="." method="_on_AcceptPact_mouse_entered"]
+[connection signal="mouse_exited" from="AcceptPact" to="." method="_on_AcceptPact_mouse_exited"]
 [connection signal="mouse_entered" from="CloseArea" to="." method="_on_CloseArea_mouse_entered"]
 [connection signal="mouse_exited" from="CloseArea" to="." method="_on_CloseArea_mouse_exited"]
