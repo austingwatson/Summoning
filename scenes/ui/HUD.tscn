@@ -10,7 +10,7 @@ region = Rect2( 240, 400, 64, 32 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 3 )
-region = Rect2( 64, 80, 16, 16 )
+region = Rect2( 16, 80, 16, 16 )
 
 [sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 2 )

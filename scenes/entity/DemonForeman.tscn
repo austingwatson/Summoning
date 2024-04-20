@@ -47,8 +47,9 @@ script = ExtResource( 3 )
 position = Vector2( 0, -13 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 3
+frame = 1
 playing = true
 
 [node name="Eye" type="Sprite" parent="."]
 texture = SubResource( 8 )
+offset = Vector2( 0, 1 )

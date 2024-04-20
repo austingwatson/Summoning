@@ -13,7 +13,7 @@ var visible_characters = 0
 
 
 func _ready():
-	lines.append("You will serve me.")
+	lines.append("New spawn! You will serve me.")
 	lines.append("A summoner has made a pact. Their soul is ours if we fulfill their demand.")
 	lines.append("Move demonflesh onto the slab to create a suitable servant.")
 	lines.append("Hit the stone button on the altar when you are ready to create the demon.")
@@ -23,10 +23,10 @@ func _ready():
 	lines.append("Send the summoner our servant by touching the seal on their pact.")
 	lines.append("Bargain fulfilled. Their sinful soul is yours.")
 	lines.append("Not all demonflesh is equal. Learn the traits of each part by eating a sample.")
-	lines.append("If you wish to save a servant for later, hand them on the hook.")
+	lines.append("If you wish to save a servant for later, hang them on the hook. Make a spare now.")
 	lines.append("Each sin grants demons specific abilities.")
 	lines.append("Wrath breeds lethality, Envy – endurance, Greed – speed, and Pride – charm.")
-	lines.append("I require a soul quota each month. Fail and I’ll have you fired.")
+	lines.append("I require a soul quota each month. Fail and I will have you fired.")
 	lines.append("When you think you've reached your quota, get ready for work next month.")
 	lines.append("I’ve got my eye on you.")
 
